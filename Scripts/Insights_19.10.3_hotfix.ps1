@@ -3,44 +3,54 @@
   ,[Parameter(Mandatory=$true)][string]$password
 )
 
+$insightsAdminToolPath = "${Env:ProgramFiles(x86)}\UiPath\Orchestrator\Tools"
+$uifrostPath = "${Env:ProgramFiles}\Sisense\DataConnectors\JVMContainer\Connectors\UiFrost"
+
+
 function Get-checkBuild($tenant)
 {
-        $cubeBuilding = 0
-        while ($cubeBuilding -ne 1)
+        $cubeBuilding = 1
+        while ($cubeBuilding -ne 0)
         {
-            $buildResult = & "C:\Program Files (x86)\UiPath\Orchestrator\Tools\UiPath.InsightsAdminTool.exe" buildStatus -t $tenant | out-string
+            $buildResult = & "$insightsAdminToolPath\UiPath.InsightsAdminTool.exe" buildStatus -t $tenant | out-string
             $buildStatus = $buildResult.Split(“`n”)
 
             if($buildStatus[1].StartsWith("Build successfully ended"))
             {
-                $cubeBuilding = 1;
+                $cubeBuilding = 0;
+            }
+            elseif ($cubeBuilding -eq 180)
+            {
+                throw 'Cube is still building after 30m. Please execute script during downtime.'
             }
             else
             {
                 Write-Output "$tenant Cube is still building. Waiting..."
                 Start-Sleep -s 10
+                $cubeBuilding++
             }
         }
 
 }
 
 Write-Output "Copying .jar"
-Copy-Item test.txt -Destination "C:\Program Files\Sisense\DataConnectors\JVMContainer\Connectors\UiFrost\com.sisense.connectors.jdbc.UiFrost.jar" -Recurse -force
+Copy-Item com.sisense.connectors.jdbc.UiFrost.jar -Destination "$uifrostPath\com.sisense.connectors.jdbc.UiFrost.jar" -Recurse -force
 
 
 Write-Output "Getting list of tenants"
-$listTenants = & "C:\Program Files (x86)\UiPath\Orchestrator\Tools\UiPath.InsightsAdminTool.exe" list -u $username -p $password | out-string
+$listTenants = & "$insightsAdminToolPath\UiPath.InsightsAdminTool.exe" list -u $username -p $password | out-string
 $tenantArray = $listTenants.Split(“`n”)
 
 Write-Output "Starting cube rebuilds"
 foreach ($row in $tenantArray)
 {
+    #Iterate through tenants and do a full rebuild on any tenant that has insights installed
     if($row -match 'tenant (?<Tenant>.+) with insights ENABLED')
     {        
         $tenant =   $Matches.Tenant        
         Get-checkBuild $tenant        
         Write-Output "Triggered $tenant cube rebuild"
-        & "C:\Program Files (x86)\UiPath\Orchestrator\Tools\UiPath.InsightsAdminTool.exe" rebuild -t $tenant | out-null        
+        & "$insightsAdminToolPath\UiPath.InsightsAdminTool.exe" rebuild -t $tenant | out-null        
         Get-checkBuild $tenant        
         Write-Output "$tenant cube is rebuilt"
     }
@@ -49,4 +59,6 @@ foreach ($row in $tenantArray)
 Write-Output "Restarting Sisense.JVMConnectorsContainer Service"
 Restart-Service -Name Sisense.JVMConnectorsContainer -Force
 Write-Output "Restarted Sisense.JVMConnectorsContainer Service"
+
+Write-Output "Fix applied"
 
