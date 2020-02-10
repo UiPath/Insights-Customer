@@ -6,29 +6,29 @@
 $insightsAdminToolPath = "${Env:ProgramFiles(x86)}\UiPath\Orchestrator\Tools"
 $uifrostPath = "${Env:ProgramFiles}\Sisense\DataConnectors\JVMContainer\Connectors\UiFrost"
 
-function Get-checkBuild($tenant)
+function Get-CheckBuild($tenant)
 {
-        $cubeBuilding = 1
-        while ($cubeBuilding -ne 0)
-        {
-            $buildResult = & "$insightsAdminToolPath\UiPath.InsightsAdminTool.exe" buildStatus -t $tenant | out-string
-            $buildStatus = $buildResult.Split(“`n”)
+	$cubeBuilding = 1
+	while ($cubeBuilding -ne 0)
+	{
+		$buildResult = & "$insightsAdminToolPath\UiPath.InsightsAdminTool.exe" buildStatus -t $tenant | out-string
+		$buildStatus = $buildResult.Split(“`n”)
 
-            if($buildStatus[1].StartsWith("Build successfully ended"))
-            {
-                $cubeBuilding = 0;
-            }
-            elseif ($cubeBuilding -eq 180)
-            {
-                throw 'Cube is still building after 30m. Please execute script during downtime.'
-            }
-            else
-            {
-                Write-Output "$tenant Cube is still building. Waiting..."
-                Start-Sleep -s 10
-                $cubeBuilding++
-            }
-        }
+		if($buildStatus[1].StartsWith("Build successfully ended"))
+		{
+			$cubeBuilding = 0;
+		}
+		elseif ($cubeBuilding -eq 180)
+		{
+			throw 'Cube is still building after 30m. Please execute script during downtime.'
+		}
+		else
+		{
+			Write-Output "$tenant Cube is still building. Waiting..."
+			Start-Sleep -s 10
+			$cubeBuilding++
+		}
+	}
 }
 
 Write-Output "Copying .jar"
@@ -45,10 +45,10 @@ foreach ($row in $tenantArray)
     if($row -match 'tenant (?<Tenant>.+) with insights ENABLED')
     {        
         $tenant =   $Matches.Tenant        
-        Get-checkBuild $tenant        
+        Get-CheckBuild $tenant        
         Write-Output "Triggered $tenant cube rebuild"
         & "$insightsAdminToolPath\UiPath.InsightsAdminTool.exe" rebuild -t $tenant | out-null        
-        Get-checkBuild $tenant        
+        Get-CheckBuild $tenant        
         Write-Output "$tenant cube is rebuilt"
     }    
 }
