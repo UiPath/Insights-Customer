@@ -5,7 +5,6 @@
 
 $insightsAdminToolPath = "${Env:ProgramFiles(x86)}\UiPath\Orchestrator\Tools"
 $uifrostPath = "${Env:ProgramFiles}\Sisense\DataConnectors\JVMContainer\Connectors\UiFrost"
-$currentdirectory = Get-Location
 
 function Get-checkBuild($tenant)
 {
@@ -58,7 +57,3 @@ Restart-Service -Name Sisense.JVMConnectorsContainer -Force
 Write-Output "Restarted Sisense.JVMConnectorsContainer Service"
 
 Write-Output "UTC fix applied"
-
-Write-Output "Starting chromium Same-Site Fix"
-
-Invoke-Item "$currentdirectory\Sisense patch\run_patch.cmd"
