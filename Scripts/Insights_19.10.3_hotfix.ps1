@@ -44,7 +44,7 @@ $tenantArray = $listTenants.Split(“`n”)
 Write-Output "Starting cube rebuilds"
 foreach ($row in $tenantArray)
 {
-    #Iterate through tenants and do a full rebuild on any tenant that has insights installed
+    #Iterate and find tenants that have Insights enabled and do a full rebuild
     if($row -match 'tenant (?<Tenant>.+) with insights ENABLED')
     {        
         $tenant =   $Matches.Tenant        
