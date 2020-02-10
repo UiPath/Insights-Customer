@@ -6,7 +6,6 @@
 $insightsAdminToolPath = "${Env:ProgramFiles(x86)}\UiPath\Orchestrator\Tools"
 $uifrostPath = "${Env:ProgramFiles}\Sisense\DataConnectors\JVMContainer\Connectors\UiFrost"
 
-
 function Get-checkBuild($tenant)
 {
         $cubeBuilding = 1
@@ -30,12 +29,14 @@ function Get-checkBuild($tenant)
                 $cubeBuilding++
             }
         }
-
 }
 
 Write-Output "Copying .jar"
 Copy-Item com.sisense.connectors.jdbc.UiFrost.jar -Destination "$uifrostPath\com.sisense.connectors.jdbc.UiFrost.jar" -Recurse -force
 
+Write-Output "Restarting Sisense.JVMConnectorsContainer Service"
+Restart-Service -Name Sisense.JVMConnectorsContainer -Force
+Write-Output "Restarted Sisense.JVMConnectorsContainer Service"
 
 Write-Output "Getting list of tenants"
 $listTenants = & "$insightsAdminToolPath\UiPath.InsightsAdminTool.exe" list -u $username -p $password | out-string
@@ -53,12 +54,6 @@ foreach ($row in $tenantArray)
         & "$insightsAdminToolPath\UiPath.InsightsAdminTool.exe" rebuild -t $tenant | out-null        
         Get-checkBuild $tenant        
         Write-Output "$tenant cube is rebuilt"
-    }
-    
+    }    
 }
-Write-Output "Restarting Sisense.JVMConnectorsContainer Service"
-Restart-Service -Name Sisense.JVMConnectorsContainer -Force
-Write-Output "Restarted Sisense.JVMConnectorsContainer Service"
-
 Write-Output "Fix applied"
-
