@@ -5,6 +5,7 @@
 
 $insightsAdminToolPath = "${Env:ProgramFiles(x86)}\UiPath\Orchestrator\Tools"
 $uifrostPath = "${Env:ProgramFiles}\Sisense\DataConnectors\JVMContainer\Connectors\UiFrost"
+$currentdirectory = Get-Location
 
 function Get-checkBuild($tenant)
 {
@@ -34,10 +35,6 @@ function Get-checkBuild($tenant)
 Write-Output "Copying .jar"
 Copy-Item com.sisense.connectors.jdbc.UiFrost.jar -Destination "$uifrostPath\com.sisense.connectors.jdbc.UiFrost.jar" -Recurse -force
 
-Write-Output "Restarting Sisense.JVMConnectorsContainer Service"
-Restart-Service -Name Sisense.JVMConnectorsContainer -Force
-Write-Output "Restarted Sisense.JVMConnectorsContainer Service"
-
 Write-Output "Getting list of tenants"
 $listTenants = & "$insightsAdminToolPath\UiPath.InsightsAdminTool.exe" list -u $username -p $password | out-string
 $tenantArray = $listTenants.Split(“`n”)
@@ -56,4 +53,12 @@ foreach ($row in $tenantArray)
         Write-Output "$tenant cube is rebuilt"
     }    
 }
-Write-Output "Fix applied"
+Write-Output "Restarting Sisense.JVMConnectorsContainer Service"
+Restart-Service -Name Sisense.JVMConnectorsContainer -Force
+Write-Output "Restarted Sisense.JVMConnectorsContainer Service"
+
+Write-Output "UTC fix applied"
+
+Write-Output "Starting chromium Same-Site Fix"
+
+Invoke-Item "$currentdirectory\Sisense patch\run_patch.cmd"
