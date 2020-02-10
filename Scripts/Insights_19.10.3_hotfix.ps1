@@ -34,6 +34,10 @@ function Get-CheckBuild($tenant)
 Write-Output "Copying .jar"
 Copy-Item com.sisense.connectors.jdbc.UiFrost.jar -Destination "$uifrostPath\com.sisense.connectors.jdbc.UiFrost.jar" -Recurse -force
 
+Write-Output "Restarting Sisense.JVMConnectorsContainer Service"
+Restart-Service -Name Sisense.JVMConnectorsContainer -Force
+Write-Output "Restarted Sisense.JVMConnectorsContainer Service"
+
 Write-Output "Getting list of tenants"
 $listTenants = & "$insightsAdminToolPath\UiPath.InsightsAdminTool.exe" list -u $username -p $password | out-string
 $tenantArray = $listTenants.Split(“`n”)
@@ -52,8 +56,5 @@ foreach ($row in $tenantArray)
         Write-Output "$tenant cube is rebuilt"
     }    
 }
-Write-Output "Restarting Sisense.JVMConnectorsContainer Service"
-Restart-Service -Name Sisense.JVMConnectorsContainer -Force
-Write-Output "Restarted Sisense.JVMConnectorsContainer Service"
 
 Write-Output "UTC fix applied"
