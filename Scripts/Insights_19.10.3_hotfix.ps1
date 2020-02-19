@@ -9,6 +9,7 @@ $uifrostPath = "${Env:ProgramFiles}\Sisense\DataConnectors\JVMContainer\Connecto
 function Get-CheckBuild($tenant)
 {
 	$cubeBuilding = 1
+    $buildTime = 0
 	while ($cubeBuilding -ne 0)
 	{
 		$buildResult = & "$insightsAdminToolPath\UiPath.InsightsAdminTool.exe" buildStatus -t $tenant | out-string
@@ -24,18 +25,32 @@ function Get-CheckBuild($tenant)
 		}
 		else
 		{
-			Write-Output "$tenant Cube is still building. Waiting..."
+			Write-Output "$tenant Cube is still building. Waiting 10s before trying again. ($buildTime)"
 			Start-Sleep -s 10
 			$cubeBuilding++
+            $buildTime = $buildTime + 10
 		}
 	}
 }
-
-Write-Output "Copying .jar"
-Copy-Item com.sisense.connectors.jdbc.UiFrost.jar -Destination "$uifrostPath\com.sisense.connectors.jdbc.UiFrost.jar" -Recurse -force
-
-Write-Output "Restarting Sisense.JVMConnectorsContainer Service"
-Restart-Service -Name Sisense.JVMConnectorsContainer -Force
+try{
+    Write-Output "Copying .jar"
+    Copy-Item com.sisense.connectors.jdbc.UiFrost.jar -Destination "$uifrostPath\com.sisense.connectors.jdbc.UiFrost.jar" -Recurse -force -errorAction stop
+}
+catch
+{
+    Write-Output $_.Exception.Message
+    exit 1
+}
+try
+{
+    Write-Output "Restarting Sisense.JVMConnectorsContainer Service"
+    Restart-Service -Name Sisense.JVMConnectorsContainer -Force -ErrorAction Stop
+}
+catch
+{
+    Write-Output "Error restarting Sisense.JVMConnectorsContainer service"
+    exit 1
+}
 Write-Output "Restarted Sisense.JVMConnectorsContainer Service"
 
 Write-Output "Getting list of tenants"
