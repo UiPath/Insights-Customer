@@ -1,0 +1,2642 @@
+{
+  "title": "##Dashboard_BusinessROI_business_roi##",
+  "desc": "",
+  "source": "5df869840aa5152be819fb7c",
+  "type": "dashboard",
+  "style": {
+    "name": "vivid",
+    "palette": {
+      "_id": "5d97471a4dc7a21c9cef1737",
+      "colors": [
+        "#3471AD",
+        "#F66500",
+        "#FFC400",
+        "#42BC39"
+      ],
+      "name": "Basic",
+      "isDefault": false,
+      "sortOrder": 20,
+      "isSystem": true
+    }
+  },
+  "layout": {
+    "instanceid": "65755-C45E-80",
+    "container": {},
+    "type": "columnar",
+    "columns": [
+      {
+        "width": 100,
+        "cells": [
+          {
+            "subcells": [
+              {
+                "elements": [
+                  {
+                    "minHeight": 64,
+                    "maxHeight": 1028,
+                    "height": "148px",
+                    "minWidth": 48,
+                    "maxWidth": 1028,
+                    "defaultWidth": 512,
+                    "widgetid": "5fad87bc92b0c81eb8df0a34"
+                  }
+                ],
+                "width": 23.52941176470588,
+                "stretchable": false,
+                "pxlWidth": 385,
+                "index": 0
+              },
+              {
+                "elements": [
+                  {
+                    "minHeight": 128,
+                    "maxHeight": 2048,
+                    "minWidth": 128,
+                    "maxWidth": 2048,
+                    "height": "148px",
+                    "defaultWidth": 512,
+                    "widgetid": "5fad87bc92b0c81eb8df0a33",
+                    "autoHeight": "63px"
+                  }
+                ],
+                "width": 25.259515570934255,
+                "stretchable": false,
+                "pxlWidth": 413,
+                "index": 1
+              },
+              {
+                "elements": [
+                  {
+                    "minHeight": 64,
+                    "maxHeight": 1028,
+                    "minWidth": 48,
+                    "maxWidth": 1028,
+                    "defaultWidth": 512,
+                    "widgetid": "5fad87bc92b0c81eb8df0a30",
+                    "height": "148px"
+                  }
+                ],
+                "width": 26.29757785467128,
+                "stretchable": false,
+                "pxlWidth": 431,
+                "index": 2
+              },
+              {
+                "elements": [
+                  {
+                    "minHeight": 64,
+                    "maxHeight": 1028,
+                    "height": "148px",
+                    "minWidth": 48,
+                    "maxWidth": 1028,
+                    "defaultWidth": 512,
+                    "widgetid": "5fad87bc92b0c81eb8df0a35"
+                  }
+                ],
+                "width": 24.913494809688583,
+                "stretchable": false,
+                "pxlWidth": 408,
+                "index": 3
+              }
+            ]
+          },
+          {
+            "subcells": [
+              {
+                "elements": [
+                  {
+                    "minHeight": 96,
+                    "maxHeight": 2048,
+                    "minWidth": 128,
+                    "maxWidth": 2048,
+                    "defaultWidth": 512,
+                    "widgetid": "5fad87bc92b0c81eb8df0a31",
+                    "height": "520px"
+                  }
+                ],
+                "width": 44.636678200692046,
+                "stretchable": false,
+                "pxlWidth": 731,
+                "index": 0
+              },
+              {
+                "elements": [
+                  {
+                    "minHeight": 96,
+                    "maxHeight": 2048,
+                    "minWidth": 128,
+                    "maxWidth": 2048,
+                    "height": "520px",
+                    "defaultWidth": 512,
+                    "widgetid": "5fad87bc92b0c81eb8df0a36"
+                  }
+                ],
+                "width": 55.36332179930795,
+                "stretchable": false,
+                "pxlWidth": 906,
+                "index": 1
+              }
+            ]
+          },
+          {
+            "subcells": [
+              {
+                "elements": [
+                  {
+                    "minHeight": 96,
+                    "maxHeight": 2048,
+                    "minWidth": 128,
+                    "maxWidth": 2048,
+                    "height": "520px",
+                    "defaultWidth": 512,
+                    "widgetid": "5fad87bc92b0c81eb8df0a37"
+                  }
+                ],
+                "width": 100,
+                "stretchable": false,
+                "pxlWidth": 1636,
+                "index": 0
+              }
+            ]
+          },
+          {
+            "subcells": [
+              {
+                "elements": [
+                  {
+                    "minHeight": 32,
+                    "maxHeight": 2048,
+                    "minWidth": 128,
+                    "maxWidth": 2048,
+                    "height": "136px",
+                    "defaultWidth": 256,
+                    "widgetid": "5fad87bc92b0c81eb8df0a32"
+                  }
+                ],
+                "width": 100,
+                "stretchable": false,
+                "pxlWidth": 1636,
+                "index": 0
+              }
+            ]
+          }
+        ],
+        "pxlWidth": 1636,
+        "index": 0
+      }
+    ]
+  },
+  "original": null,
+  "oid": "5fad87bc92b0c81eb8df0a2f",
+  "dataExploration": true,
+  "datasource": {
+    "title": "Default-Cube",
+    "fullname": "LocalHost/Default-Cube",
+    "id": "aLOCALHOST_aDEFAULTLQAaCUBE",
+    "address": "LocalHost",
+    "database": "aDefaultLQAaCube"
+  },
+  "filters": [
+    {
+      "jaql": {
+        "table": "Jobs",
+        "column": "EndTime",
+        "dim": "[Jobs.EndTime (Calendar)]",
+        "datatype": "datetime",
+        "merged": true,
+        "title": "##Dashboard_BusinessROI_date##",
+        "level": "years",
+        "datasource": {
+          "title": "Default-Cube",
+          "fullname": "LocalHost/Default-Cube",
+          "id": "aLOCALHOST_aDEFAULTLQAaCUBE",
+          "address": "LocalHost",
+          "database": "aDefaultLQAaCube",
+          "lastBuildTime": "2019-12-19T22:25:03.847Z"
+        },
+        "collapsed": true,
+        "filter": {
+          "last": {
+            "count": 1,
+            "offset": 0
+          }
+        }
+      },
+      "instanceid": "65DF9-3D6C-50",
+      "isCascading": false,
+      "disabled": false
+    },
+    {
+      "jaql": {
+        "table": "Jobs",
+        "column": "Folder",
+        "dim": "[Jobs.Folder]",
+        "datatype": "text",
+        "title": "##Dashboard_BusinessROI_Filter_Folder##",
+        "collapsed": false,
+        "datasource": {
+          "title": "Default-Cube",
+          "fullname": "LocalHost/Default-Cube",
+          "id": "aLOCALHOST_aDEFAULTLQAaCUBE",
+          "address": "LocalHost",
+          "database": "aDefaultLQAaCube",
+          "lastBuildTime": "2020-03-12T21:49:48.758Z"
+        },
+        "filter": {
+          "explicit": false,
+          "multiSelection": true,
+          "all": true
+        }
+      },
+      "instanceid": "39EDC-0D93-FD",
+      "isCascading": false
+    },
+    {
+      "jaql": {
+        "table": "Jobs",
+        "column": "JobState",
+        "dim": "[Jobs.JobState]",
+        "datatype": "text",
+        "merged": true,
+        "title": "##Dashboard_BusinessROI_Job_Status##",
+        "collapsed": true,
+        "datasource": {
+          "title": "Default-Cube",
+          "fullname": "LocalHost/Default-Cube",
+          "id": "aLOCALHOST_aDEFAULTLQAaCUBE",
+          "address": "LocalHost",
+          "database": "aDefaultLQAaCube",
+          "lastBuildTime": "2020-04-02T01:19:32.530Z"
+        },
+        "filter": {
+          "explicit": true,
+          "multiSelection": true,
+          "members": [
+            "##Query_Jobs_JobState_Successful##",
+            "Successful"
+          ]
+        }
+      },
+      "instanceid": "BF7E4-9E44-70",
+      "isCascading": false,
+      "disabled": false,
+      "locked": true
+    }
+  ],
+  "editing": false,
+  "parentFolder": null,
+  "filterToDatasourceMapping": {},
+  "defaultFilters": [],
+  "isPublic": null,
+  "settings": {
+    "autoUpdateOnFiltersChange": true
+  },
+  "widgets": [
+    {
+      "title": "##Dashboard_BusinessROI_goal_for_year_____##",
+      "type": "indicator",
+      "subtype": "indicator/gauge",
+      "oid": "5fad87bc92b0c81eb8df0a30",
+      "desc": null,
+      "source": "5df1d5a520b90412c0c3e2c4",
+      "datasource": {
+        "title": "Default-Cube",
+        "fullname": "LocalHost/Default-Cube",
+        "id": "aLOCALHOST_aDEFAULTLQAaCUBE",
+        "address": "LocalHost",
+        "database": "aDefaultLQAaCube"
+      },
+      "selection": null,
+      "metadata": {
+        "ignore": {
+          "dimensions": [],
+          "all": false
+        },
+        "panels": [
+          {
+            "name": "value",
+            "items": [
+              {
+                "jaql": {
+                  "type": "measure",
+                  "formula": "CASE\nWHEN(sum([5534C-2FA],((( all([D92F9-7AD]) *dupcount([5534C-2FA]) -([AEB5E-CE3]/60)  )) /60) * all([C13D1-612]))  < 0) THEN 0\nELSE sum([5534C-2FA],((( all([D92F9-7AD]) *dupcount([5534C-2FA]) -([AEB5E-CE3]/60)  )) /60) * all([C13D1-612])) \nEND",
+                  "context": {
+                    "[D92F9-7AD]": {
+                      "table": "Jobs",
+                      "column": "ProcessId",
+                      "dim": "[Jobs.ProcessId]",
+                      "datatype": "numeric",
+                      "title": "@Process Baselines.Manual Time(mins)"
+                    },
+                    "[C13D1-612]": {
+                      "table": "Jobs",
+                      "column": "ProcessId",
+                      "dim": "[Jobs.ProcessId]",
+                      "datatype": "numeric",
+                      "title": "@Process Baselines.Hourly Cost"
+                    },
+                    "[AEB5E-CE3]": {
+                      "table": "Jobs",
+                      "column": "RuntimeInSeconds",
+                      "dim": "[Jobs.RuntimeInSeconds]",
+                      "datatype": "numeric",
+                      "agg": "sum",
+                      "title": "Total RuntimeInSeconds"
+                    },
+                    "[14749-336]": {
+                      "table": "Jobs",
+                      "column": "RuntimeInSeconds",
+                      "dim": "[Jobs.RuntimeInSeconds]",
+                      "datatype": "numeric",
+                      "title": "RuntimeInSeconds"
+                    },
+                    "[5534C-2FA]": {
+                      "table": "Jobs",
+                      "column": "ProcessId",
+                      "dim": "[Jobs.ProcessId]",
+                      "datatype": "numeric",
+                      "title": "ProcessId"
+                    }
+                  },
+                  "title": "##Dashboard_BusinessROI_dollars##"
+                },
+                "format": {
+                  "mask": {
+                    "abbreviations": {
+                      "t": true,
+                      "b": true,
+                      "m": true,
+                      "k": false
+                    },
+                    "decimals": 0,
+                    "currency": {
+                      "symbol": "$",
+                      "position": "pre"
+                    }
+                  },
+                  "color": {
+                    "color": "#3471AD",
+                    "type": "color"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "secondary",
+            "items": []
+          },
+          {
+            "name": "min",
+            "items": [
+              {
+                "jaql": {
+                  "formula": "0",
+                  "title": "##Dashboard_BusinessROI____default_##"
+                },
+                "format": {
+                  "mask": {
+                    "type": "number",
+                    "abbreviations": {
+                      "t": true,
+                      "b": true,
+                      "m": true,
+                      "k": false
+                    },
+                    "separated": true,
+                    "decimals": "auto",
+                    "isdefault": true
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "max",
+            "items": [
+              {
+                "jaql": {
+                  "type": "measure",
+                  "formula": "500000",
+                  "context": {},
+                  "title": "##Dashboard_BusinessROI_______##"
+                },
+                "format": {
+                  "mask": {
+                    "abbreviations": {
+                      "t": true,
+                      "b": true,
+                      "m": true,
+                      "k": false
+                    },
+                    "decimals": 0,
+                    "currency": {
+                      "symbol": "$",
+                      "position": "pre"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "filters",
+            "items": []
+          }
+        ]
+      },
+      "iconSmall": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAYCAYAAAC8/X7cAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkFDOTk4NjMxNzU1MTExRTM4QkE0QjUwRjg4NjAzOUM1IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkFDOTk4NjMyNzU1MTExRTM4QkE0QjUwRjg4NjAzOUM1Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QUM5OTg2MkY3NTUxMTFFMzhCQTRCNTBGODg2MDM5QzUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QUM5OTg2MzA3NTUxMTFFMzhCQTRCNTBGODg2MDM5QzUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4Ed6mDAAACVUlEQVR42uyYzytmURjHXWPCbsTkHxAyG1Ga1SSr2chWJFnIu2AW76zFQkqzkCl2RLGXpYVSFhZIfkzZyMbPMRYkkVyfh0P3feec+97z3iMppz6d4znnfu/z3POcHy/P9/2ct1xyc956kRmAev+xVL/EO77UNtSDD9Wufc+LKfCRqgxEZ9fzvEvHgafob68uXDpJIXEc+mkewx/YgH/YJqDYhePwnz62CSiOFQAOfqCagz4oCnTlQwcsM6YkhvMZ9RlTEmcGfsD3kH6Z8pEYE2Cln2f4yoVKSKZrhNzeD3QnIjjRjEYPz50ZvnKKPrltrY9GD/WZaREPQFK1v8FXFVgBVXnE7bkKlmz0ccpa35RClYF2RaB9Z5EKYWOd6ZsCkByTLUuO6cEnIylxQ7UZQVzGbYX0a/VJJWt9bQA4Ok/1WXYB2r/Sun9HeMEUz52bOnH0WZ92Vvo8d25cxCqIK6orTde4yts2w6Nr8DOTBzjgRD83w57fCutwCDNQSmAy7e3QLadjYPhfGJKXM+Yi4p7fCutwCDNQSmAZ9RlzEbqNKuebqKYDphZZcNjrcFAW0KigDi3ROVH2qAeWVh97HQ4+66tD60Ff2VNK2F2oU2OrhRpYCaTaaZYHViR9nD7N9jpdYLDnO7qrOdEPC2BWYzsIfp2YxYl+WABjMAy36u8daCRlrh0FoNUnZaz0w7ZRWTBJFmkv9ae0+1DsohZkkkX6oJ92H8o6gAQOH5l+/ViUPQKe1NgTOHxk2JWs9Al4UhdAl6MPvAi6AJzre+//lXjlci/AAOnMDanQIR59AAAAAElFTkSuQmCC",
+      "iconSmallWizard": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAYCAYAAAC8/X7cAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkFDOTk4NjMxNzU1MTExRTM4QkE0QjUwRjg4NjAzOUM1IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkFDOTk4NjMyNzU1MTExRTM4QkE0QjUwRjg4NjAzOUM1Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QUM5OTg2MkY3NTUxMTFFMzhCQTRCNTBGODg2MDM5QzUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QUM5OTg2MzA3NTUxMTFFMzhCQTRCNTBGODg2MDM5QzUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4Ed6mDAAACVUlEQVR42uyYzytmURjHXWPCbsTkHxAyG1Ga1SSr2chWJFnIu2AW76zFQkqzkCl2RLGXpYVSFhZIfkzZyMbPMRYkkVyfh0P3feec+97z3iMppz6d4znnfu/z3POcHy/P9/2ct1xyc956kRmAev+xVL/EO77UNtSDD9Wufc+LKfCRqgxEZ9fzvEvHgafob68uXDpJIXEc+mkewx/YgH/YJqDYhePwnz62CSiOFQAOfqCagz4oCnTlQwcsM6YkhvMZ9RlTEmcGfsD3kH6Z8pEYE2Cln2f4yoVKSKZrhNzeD3QnIjjRjEYPz50ZvnKKPrltrY9GD/WZaREPQFK1v8FXFVgBVXnE7bkKlmz0ccpa35RClYF2RaB9Z5EKYWOd6ZsCkByTLUuO6cEnIylxQ7UZQVzGbYX0a/VJJWt9bQA4Ok/1WXYB2r/Sun9HeMEUz52bOnH0WZ92Vvo8d25cxCqIK6orTde4yts2w6Nr8DOTBzjgRD83w57fCutwCDNQSmAy7e3QLadjYPhfGJKXM+Yi4p7fCutwCDNQSmAZ9RlzEbqNKuebqKYDphZZcNjrcFAW0KigDi3ROVH2qAeWVh97HQ4+66tD60Ff2VNK2F2oU2OrhRpYCaTaaZYHViR9nD7N9jpdYLDnO7qrOdEPC2BWYzsIfp2YxYl+WABjMAy36u8daCRlrh0FoNUnZaz0w7ZRWTBJFmkv9ae0+1DsohZkkkX6oJ92H8o6gAQOH5l+/ViUPQKe1NgTOHxk2JWs9Al4UhdAl6MPvAi6AJzre+//lXjlci/AAOnMDanQIR59AAAAAElFTkSuQmCC",
+      "style": {
+        "subtype": "round",
+        "skin": "1",
+        "components": {
+          "ticks": {
+            "inactive": false,
+            "enabled": false
+          },
+          "labels": {
+            "inactive": false,
+            "enabled": true
+          },
+          "title": {
+            "inactive": false,
+            "enabled": false
+          },
+          "secondaryTitle": {
+            "inactive": true,
+            "enabled": true
+          }
+        },
+        "narration": {
+          "labels": []
+        },
+        "indicator/numeric": {
+          "subtype": "simple",
+          "skin": "vertical",
+          "components": {
+            "title": {
+              "inactive": false,
+              "enabled": true
+            },
+            "icon": {
+              "inactive": false,
+              "enabled": true
+            },
+            "secondaryTitle": {
+              "inactive": true,
+              "enabled": true
+            }
+          }
+        },
+        "indicator/gauge": {
+          "subtype": "round",
+          "skin": "1",
+          "components": {
+            "ticks": {
+              "inactive": false,
+              "enabled": true
+            },
+            "labels": {
+              "inactive": false,
+              "enabled": true
+            },
+            "title": {
+              "inactive": false,
+              "enabled": true
+            },
+            "secondaryTitle": {
+              "inactive": true,
+              "enabled": true
+            }
+          }
+        }
+      },
+      "instanceId": "86A0A-95CD-85",
+      "queryStartTime": "2020-04-08T00:18:25",
+      "currentPage": 0,
+      "drawing": true,
+      "widgetTimingLoged": false,
+      "continuousDates": false,
+      "nullAsZero": false,
+      "minDate": 0,
+      "maxDate": 0,
+      "tickLevel": null,
+      "forcedRedraw": false,
+      "inFullScreenMode": false,
+      "realTimeRefreshing": false,
+      "options": {
+        "dashboardFiltersMode": "filter",
+        "selector": false,
+        "disallowSelector": true,
+        "triggersDomready": true,
+        "autoUpdateOnEveryChange": true,
+        "supportsHierarchies": false
+      },
+      "dashboardid": "5fad87bc92b0c81eb8df0a2f",
+      "canEditFilters": false,
+      "script_old": null,
+      "script": null,
+      "instanceid": "80A1E-D500-E7",
+      "viewState": {
+        "activeTab": "filters"
+      }
+    },
+    {
+      "title": "##Dashboard_BusinessROI_top_10_time_saving_processes##",
+      "type": "treemap",
+      "subtype": "treemap",
+      "oid": "5fad87bc92b0c81eb8df0a31",
+      "desc": null,
+      "source": "5df1d5a520b90412c0c3e2c7",
+      "datasource": {
+        "title": "Default-Cube",
+        "fullname": "LocalHost/Default-Cube",
+        "id": "aLOCALHOST_aDEFAULTLQAaCUBE",
+        "address": "LocalHost",
+        "database": "aDefaultLQAaCube"
+      },
+      "selection": null,
+      "metadata": {
+        "ignore": {
+          "dimensions": [],
+          "all": false
+        },
+        "panels": [
+          {
+            "name": "categories",
+            "items": [
+              {
+                "jaql": {
+                  "table": "Jobs",
+                  "column": "ProcessName",
+                  "dim": "[Jobs.ProcessName]",
+                  "datatype": "text",
+                  "title": "##Dashboard_BusinessROI_process_name##",
+                  "datasource": {
+                    "title": "SalesOps-Cube",
+                    "fullname": "LocalHost/SalesOps-Cube",
+                    "id": "aLOCALHOST_aSALESOPSLQAaCUBE",
+                    "address": "LocalHost",
+                    "database": "aSalesOpsLQAaCube"
+                  }
+                },
+                "format": {},
+                "isColored": true
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "items": [
+              {
+                "jaql": {
+                  "type": "measure",
+                  "formula": "(SUM([C8170-2F1], DUPCOUNT([C8170-2F1]) * ALL([CD7F1-EBC])) - SUM([9F3BB-48C]/60))/60",
+                  "context": {
+                    "[CD7F1-EBC]": {
+                      "table": "Jobs",
+                      "column": "ProcessId",
+                      "dim": "[Jobs.ProcessId]",
+                      "datatype": "numeric",
+                      "title": "@Process Baselines.Manual Time(mins)"
+                    },
+                    "[9F3BB-48C]": {
+                      "table": "Jobs",
+                      "column": "RuntimeInSeconds",
+                      "dim": "[Jobs.RuntimeInSeconds]",
+                      "datatype": "numeric",
+                      "title": "RuntimeInSeconds"
+                    },
+                    "[C8170-2F1]": {
+                      "table": "Jobs",
+                      "column": "ProcessId",
+                      "dim": "[Jobs.ProcessId]",
+                      "datatype": "numeric",
+                      "title": "ProcessId"
+                    }
+                  },
+                  "title": "##Dashboard_BusinessROI_cumulative_hours_saved##"
+                },
+                "format": {
+                  "mask": {
+                    "type": "number",
+                    "abbreviations": {
+                      "t": true,
+                      "b": true,
+                      "m": true,
+                      "k": true
+                    },
+                    "separated": true,
+                    "decimals": "auto",
+                    "isdefault": true
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "color",
+            "items": [
+              {
+                "jaql": {
+                  "table": "Jobs",
+                  "column": "ProcessName",
+                  "dim": "[Jobs.ProcessName]",
+                  "datatype": "text",
+                  "title": "##Dashboard_BusinessROI_processname##"
+                }
+              }
+            ]
+          },
+          {
+            "name": "filters",
+            "items": [
+              {
+                "jaql": {
+                  "type": "measure",
+                  "formula": "(SUM([C1E69-0A8], DUPCOUNT([C1E69-0A8]) * ALL([9AD1E-45F])) - SUM([47789-6CF]/60))/60",
+                  "context": {
+                    "[9AD1E-45F]": {
+                      "table": "Jobs",
+                      "column": "ProcessId",
+                      "dim": "[Jobs.ProcessId]",
+                      "datatype": "numeric",
+                      "title": "@Process Baselines.Manual Time(mins)"
+                    },
+                    "[47789-6CF]": {
+                      "table": "Jobs",
+                      "column": "RuntimeInSeconds",
+                      "dim": "[Jobs.RuntimeInSeconds]",
+                      "datatype": "numeric",
+                      "title": "RuntimeInSeconds"
+                    },
+                    "[C1E69-0A8]": {
+                      "table": "Jobs",
+                      "column": "ProcessName",
+                      "dim": "[Jobs.ProcessName]",
+                      "datatype": "text",
+                      "merged": true,
+                      "title": "ProcessName"
+                    }
+                  },
+                  "title": "Cumulative hours saved",
+                  "filter": {
+                    "top": 10
+                  },
+                  "datasource": {
+                    "title": "Default-Cube",
+                    "fullname": "LocalHost/Default-Cube",
+                    "id": "aLOCALHOST_aDEFAULTLQAaCUBE",
+                    "address": "LocalHost",
+                    "database": "aDefaultLQAaCube"
+                  },
+                  "collapsed": false
+                },
+                "format": {
+                  "mask": {
+                    "type": "number",
+                    "abbreviations": {
+                      "t": true,
+                      "b": true,
+                      "m": true,
+                      "k": true
+                    },
+                    "separated": true,
+                    "decimals": "auto",
+                    "isdefault": true
+                  }
+                },
+                "disabled": false
+              }
+            ]
+          }
+        ]
+      },
+      "iconSmall": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAYCAYAAAC8/X7cAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkFDOTk4NjMxNzU1MTExRTM4QkE0QjUwRjg4NjAzOUM1IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkFDOTk4NjMyNzU1MTExRTM4QkE0QjUwRjg4NjAzOUM1Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QUM5OTg2MkY3NTUxMTFFMzhCQTRCNTBGODg2MDM5QzUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QUM5OTg2MzA3NTUxMTFFMzhCQTRCNTBGODg2MDM5QzUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4Ed6mDAAACVUlEQVR42uyYzytmURjHXWPCbsTkHxAyG1Ga1SSr2chWJFnIu2AW76zFQkqzkCl2RLGXpYVSFhZIfkzZyMbPMRYkkVyfh0P3feec+97z3iMppz6d4znnfu/z3POcHy/P9/2ct1xyc956kRmAev+xVL/EO77UNtSDD9Wufc+LKfCRqgxEZ9fzvEvHgafob68uXDpJIXEc+mkewx/YgH/YJqDYhePwnz62CSiOFQAOfqCagz4oCnTlQwcsM6YkhvMZ9RlTEmcGfsD3kH6Z8pEYE2Cln2f4yoVKSKZrhNzeD3QnIjjRjEYPz50ZvnKKPrltrY9GD/WZaREPQFK1v8FXFVgBVXnE7bkKlmz0ccpa35RClYF2RaB9Z5EKYWOd6ZsCkByTLUuO6cEnIylxQ7UZQVzGbYX0a/VJJWt9bQA4Ok/1WXYB2r/Sun9HeMEUz52bOnH0WZ92Vvo8d25cxCqIK6orTde4yts2w6Nr8DOTBzjgRD83w57fCutwCDNQSmAy7e3QLadjYPhfGJKXM+Yi4p7fCutwCDNQSmAZ9RlzEbqNKuebqKYDphZZcNjrcFAW0KigDi3ROVH2qAeWVh97HQ4+66tD60Ff2VNK2F2oU2OrhRpYCaTaaZYHViR9nD7N9jpdYLDnO7qrOdEPC2BWYzsIfp2YxYl+WABjMAy36u8daCRlrh0FoNUnZaz0w7ZRWTBJFmkv9ae0+1DsohZkkkX6oJ92H8o6gAQOH5l+/ViUPQKe1NgTOHxk2JWs9Al4UhdAl6MPvAi6AJzre+//lXjlci/AAOnMDanQIR59AAAAAElFTkSuQmCC",
+      "iconSmallWizard": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAYCAYAAAC8/X7cAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkFDOTk4NjMxNzU1MTExRTM4QkE0QjUwRjg4NjAzOUM1IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkFDOTk4NjMyNzU1MTExRTM4QkE0QjUwRjg4NjAzOUM1Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QUM5OTg2MkY3NTUxMTFFMzhCQTRCNTBGODg2MDM5QzUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QUM5OTg2MzA3NTUxMTFFMzhCQTRCNTBGODg2MDM5QzUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4Ed6mDAAACVUlEQVR42uyYzytmURjHXWPCbsTkHxAyG1Ga1SSr2chWJFnIu2AW76zFQkqzkCl2RLGXpYVSFhZIfkzZyMbPMRYkkVyfh0P3feec+97z3iMppz6d4znnfu/z3POcHy/P9/2ct1xyc956kRmAev+xVL/EO77UNtSDD9Wufc+LKfCRqgxEZ9fzvEvHgafob68uXDpJIXEc+mkewx/YgH/YJqDYhePwnz62CSiOFQAOfqCagz4oCnTlQwcsM6YkhvMZ9RlTEmcGfsD3kH6Z8pEYE2Cln2f4yoVKSKZrhNzeD3QnIjjRjEYPz50ZvnKKPrltrY9GD/WZaREPQFK1v8FXFVgBVXnE7bkKlmz0ccpa35RClYF2RaB9Z5EKYWOd6ZsCkByTLUuO6cEnIylxQ7UZQVzGbYX0a/VJJWt9bQA4Ok/1WXYB2r/Sun9HeMEUz52bOnH0WZ92Vvo8d25cxCqIK6orTde4yts2w6Nr8DOTBzjgRD83w57fCutwCDNQSmAy7e3QLadjYPhfGJKXM+Yi4p7fCutwCDNQSmAZ9RlzEbqNKuebqKYDphZZcNjrcFAW0KigDi3ROVH2qAeWVh97HQ4+66tD60Ff2VNK2F2oU2OrhRpYCaTaaZYHViR9nD7N9jpdYLDnO7qrOdEPC2BWYzsIfp2YxYl+WABjMAy36u8daCRlrh0FoNUnZaz0w7ZRWTBJFmkv9ae0+1DsohZkkkX6oJ92H8o6gAQOH5l+/ViUPQKe1NgTOHxk2JWs9Al4UhdAl6MPvAi6AJzre+//lXjlci/AAOnMDanQIR59AAAAAElFTkSuQmCC",
+      "style": {
+        "title/1": true,
+        "title/2": true,
+        "title/3": true,
+        "tooltip/value": true,
+        "tooltip/contribution": false,
+        "narration": {
+          "enabled": false,
+          "display": "above",
+          "format": "bullets",
+          "verbosity": "medium",
+          "up_sentiment": "good",
+          "aggregation": "sum",
+          "labels": [
+            {
+              "id": "##Dashboard_BusinessROI_process_name##",
+              "title": "##Dashboard_BusinessROI_process_name##",
+              "singular": "##Dashboard_BusinessROI_process_name##",
+              "plural": "##Dashboard_BusinessROI_process_name##"
+            },
+            {
+              "id": "##Dashboard_BusinessROI_processname##",
+              "title": "##Dashboard_BusinessROI_processname##",
+              "singular": "##Dashboard_BusinessROI_processname##",
+              "plural": "##Dashboard_BusinessROI_processname##"
+            }
+          ]
+        },
+        "colorDim": "[Jobs.ProcessName]"
+      },
+      "instanceId": "05F96-8CB5-AD",
+      "queryStartTime": "2020-01-10T15:35:27",
+      "currentPage": 0,
+      "drawing": true,
+      "widgetTimingLoged": false,
+      "continuousDates": false,
+      "nullAsZero": false,
+      "minDate": 1553756400000,
+      "maxDate": 1569481200000,
+      "tickLevel": "week",
+      "forcedRedraw": false,
+      "inFullScreenMode": false,
+      "realTimeRefreshing": false,
+      "options": {
+        "dashboardFiltersMode": "filter",
+        "triggersDomready": true,
+        "selector": true,
+        "disallowSelector": false,
+        "autoUpdateOnEveryChange": true,
+        "supportsHierarchies": false,
+        "selectorLocked": false
+      },
+      "dashboardid": "5fad87bc92b0c81eb8df0a2f",
+      "canEditFilters": true,
+      "script_old": null,
+      "script": null,
+      "instanceid": "1AA9B-0736-99",
+      "viewState": {
+        "activeTab": "filters"
+      }
+    },
+    {
+      "title": "Process Baselines",
+      "type": "inputwidget",
+      "subtype": "inputwidget",
+      "oid": "5fad87bc92b0c81eb8df0a32",
+      "desc": null,
+      "source": "5df1d5a520b90412c0c3e2c1",
+      "datasource": {
+        "title": "Default-Cube",
+        "fullname": "LocalHost/Default-Cube",
+        "id": "aLOCALHOST_aDEFAULTLQAaCUBE",
+        "address": "LocalHost",
+        "database": "aDefaultLQAaCube"
+      },
+      "selection": null,
+      "metadata": {
+        "ignore": {
+          "dimensions": [],
+          "all": false
+        },
+        "panels": [
+          {
+            "name": "items",
+            "items": [
+              {
+                "jaql": {
+                  "table": "Jobs",
+                  "column": "ProcessId",
+                  "dim": "[Jobs.ProcessId]",
+                  "datatype": "numeric",
+                  "title": "##Dashboard_BusinessROI_processid##"
+                },
+                "format": {
+                  "mask": {
+                    "isdefault": true
+                  }
+                }
+              },
+              {
+                "jaql": {
+                  "table": "Jobs",
+                  "column": "ProcessName",
+                  "dim": "[Jobs.ProcessName]",
+                  "datatype": "text",
+                  "merged": true,
+                  "title": "##Dashboard_BusinessROI_process##"
+                }
+              }
+            ]
+          },
+          {
+            "name": "filters",
+            "items": []
+          }
+        ]
+      },
+      "iconSmall": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAYCAYAAAC8/X7cAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkFDOTk4NjMxNzU1MTExRTM4QkE0QjUwRjg4NjAzOUM1IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkFDOTk4NjMyNzU1MTExRTM4QkE0QjUwRjg4NjAzOUM1Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QUM5OTg2MkY3NTUxMTFFMzhCQTRCNTBGODg2MDM5QzUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QUM5OTg2MzA3NTUxMTFFMzhCQTRCNTBGODg2MDM5QzUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4Ed6mDAAACVUlEQVR42uyYzytmURjHXWPCbsTkHxAyG1Ga1SSr2chWJFnIu2AW76zFQkqzkCl2RLGXpYVSFhZIfkzZyMbPMRYkkVyfh0P3feec+97z3iMppz6d4znnfu/z3POcHy/P9/2ct1xyc956kRmAev+xVL/EO77UNtSDD9Wufc+LKfCRqgxEZ9fzvEvHgafob68uXDpJIXEc+mkewx/YgH/YJqDYhePwnz62CSiOFQAOfqCagz4oCnTlQwcsM6YkhvMZ9RlTEmcGfsD3kH6Z8pEYE2Cln2f4yoVKSKZrhNzeD3QnIjjRjEYPz50ZvnKKPrltrY9GD/WZaREPQFK1v8FXFVgBVXnE7bkKlmz0ccpa35RClYF2RaB9Z5EKYWOd6ZsCkByTLUuO6cEnIylxQ7UZQVzGbYX0a/VJJWt9bQA4Ok/1WXYB2r/Sun9HeMEUz52bOnH0WZ92Vvo8d25cxCqIK6orTde4yts2w6Nr8DOTBzjgRD83w57fCutwCDNQSmAy7e3QLadjYPhfGJKXM+Yi4p7fCutwCDNQSmAZ9RlzEbqNKuebqKYDphZZcNjrcFAW0KigDi3ROVH2qAeWVh97HQ4+66tD60Ff2VNK2F2oU2OrhRpYCaTaaZYHViR9nD7N9jpdYLDnO7qrOdEPC2BWYzsIfp2YxYl+WABjMAy36u8daCRlrh0FoNUnZaz0w7ZRWTBJFmkv9ae0+1DsohZkkkX6oJ92H8o6gAQOH5l+/ViUPQKe1NgTOHxk2JWs9Al4UhdAl6MPvAi6AJzre+//lXjlci/AAOnMDanQIR59AAAAAElFTkSuQmCC",
+      "iconSmallWizard": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAYCAYAAAC8/X7cAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkFDOTk4NjMxNzU1MTExRTM4QkE0QjUwRjg4NjAzOUM1IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkFDOTk4NjMyNzU1MTExRTM4QkE0QjUwRjg4NjAzOUM1Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QUM5OTg2MkY3NTUxMTFFMzhCQTRCNTBGODg2MDM5QzUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QUM5OTg2MzA3NTUxMTFFMzhCQTRCNTBGODg2MDM5QzUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4Ed6mDAAACVUlEQVR42uyYzytmURjHXWPCbsTkHxAyG1Ga1SSr2chWJFnIu2AW76zFQkqzkCl2RLGXpYVSFhZIfkzZyMbPMRYkkVyfh0P3feec+97z3iMppz6d4znnfu/z3POcHy/P9/2ct1xyc956kRmAev+xVL/EO77UNtSDD9Wufc+LKfCRqgxEZ9fzvEvHgafob68uXDpJIXEc+mkewx/YgH/YJqDYhePwnz62CSiOFQAOfqCagz4oCnTlQwcsM6YkhvMZ9RlTEmcGfsD3kH6Z8pEYE2Cln2f4yoVKSKZrhNzeD3QnIjjRjEYPz50ZvnKKPrltrY9GD/WZaREPQFK1v8FXFVgBVXnE7bkKlmz0ccpa35RClYF2RaB9Z5EKYWOd6ZsCkByTLUuO6cEnIylxQ7UZQVzGbYX0a/VJJWt9bQA4Ok/1WXYB2r/Sun9HeMEUz52bOnH0WZ92Vvo8d25cxCqIK6orTde4yts2w6Nr8DOTBzjgRD83w57fCutwCDNQSmAy7e3QLadjYPhfGJKXM+Yi4p7fCutwCDNQSmAZ9RlzEbqNKuebqKYDphZZcNjrcFAW0KigDi3ROVH2qAeWVh97HQ4+66tD60Ff2VNK2F2oU2OrhRpYCaTaaZYHViR9nD7N9jpdYLDnO7qrOdEPC2BWYzsIfp2YxYl+WABjMAy36u8daCRlrh0FoNUnZaz0w7ZRWTBJFmkv9ae0+1DsohZkkkX6oJ92H8o6gAQOH5l+/ViUPQKe1NgTOHxk2JWs9Al4UhdAl6MPvAi6AJzre+//lXjlci/AAOnMDanQIR59AAAAAElFTkSuQmCC",
+      "style": {
+        "autoUpdate": true,
+        "narration": {
+          "enabled": false,
+          "display": "above",
+          "format": "bullets",
+          "verbosity": "medium",
+          "up_sentiment": "good",
+          "aggregation": "sum",
+          "labels": [
+            {
+              "id": "##dashboard_businessroi_processid##",
+              "title": "##Dashboard_BusinessROI_processid##",
+              "singular": "##Dashboard_BusinessROI_processid##",
+              "plural": "##Dashboard_BusinessROI_processid##"
+            },
+            {
+              "id": "##dashboard_businessroi_process##",
+              "title": "##Dashboard_BusinessROI_process##",
+              "singular": "##Dashboard_BusinessROI_process##",
+              "plural": "##Dashboard_BusinessROI_process##"
+            }
+          ]
+        },
+        "displayStyle": "table"
+      },
+      "instanceId": "C1771-1232-30",
+      "queryStartTime": "2020-04-08T00:18:37",
+      "currentPage": 0,
+      "drawing": true,
+      "widgetTimingLoged": false,
+      "continuousDates": false,
+      "nullAsZero": false,
+      "minDate": 0,
+      "maxDate": 0,
+      "tickLevel": null,
+      "forcedRedraw": false,
+      "inFullScreenMode": false,
+      "realTimeRefreshing": false,
+      "options": {
+        "dashboardFiltersMode": "select",
+        "triggersDomReady": false,
+        "selector": false,
+        "autoUpdateOnEveryChange": true
+      },
+      "dashboardid": "5fad87bc92b0c81eb8df0a2f",
+      "canEditFilters": false,
+      "script_old": null,
+      "script": null,
+      "variableNames": [
+        {
+          "id": 86385670,
+          "name": "Log_String"
+        },
+        {
+          "id": 100371967,
+          "name": "complete19"
+        },
+        {
+          "id": 229780001,
+          "name": "Log_Double"
+        },
+        {
+          "id": 406773923,
+          "name": "Log_Email"
+        },
+        {
+          "id": 427363193,
+          "name": "yy2"
+        },
+        {
+          "id": 433466366,
+          "name": "ProcessQueueItem"
+        },
+        {
+          "id": 545680296,
+          "name": "QueueItem_String"
+        },
+        {
+          "id": 554765517,
+          "name": "RandomSuccessOrFail"
+        },
+        {
+          "id": 740408590,
+          "name": "TestQ"
+        },
+        {
+          "id": 801582447,
+          "name": "Log_DateTime"
+        },
+        {
+          "id": 804852721,
+          "name": "CompleteTransactionItem"
+        },
+        {
+          "id": 841071886,
+          "name": "TestQ"
+        },
+        {
+          "id": 946956864,
+          "name": "AddAdditionalLogFieldEveryHour"
+        },
+        {
+          "id": 970223923,
+          "name": "complete_multi"
+        },
+        {
+          "id": 1008889182,
+          "name": "Log_String_Time"
+        },
+        {
+          "id": 1012284440,
+          "name": "yy"
+        },
+        {
+          "id": 1138469356,
+          "name": "Log_Int"
+        },
+        {
+          "id": 1138496132,
+          "name": "Log_String_Date"
+        },
+        {
+          "id": 1158999841,
+          "name": "LRWF2"
+        },
+        {
+          "id": 1174343132,
+          "name": "complete21"
+        },
+        {
+          "id": 1181077210,
+          "name": "TF_UiBankWebApp"
+        },
+        {
+          "id": 1239074156,
+          "name": "Log_Bool"
+        },
+        {
+          "id": 1242631373,
+          "name": "RandomSuccessOrFail"
+        },
+        {
+          "id": 1244795233,
+          "name": "TypesNew"
+        },
+        {
+          "id": 1410403533,
+          "name": "RandomSuccessOrFail"
+        },
+        {
+          "id": 1501665923,
+          "name": "Log"
+        },
+        {
+          "id": 1763240342,
+          "name": "ProcessQueue"
+        },
+        {
+          "id": 1798735411,
+          "name": "QueueItem_Int"
+        },
+        {
+          "id": 1814140179,
+          "name": "Log_Uri"
+        },
+        {
+          "id": 1815246234,
+          "name": "BlankProcess16"
+        },
+        {
+          "id": 1922118503,
+          "name": "QueueItem_Bool"
+        },
+        {
+          "id": 1928881398,
+          "name": "delay"
+        },
+        {
+          "id": 2095223754,
+          "name": "DispatchQueueItem"
+        }
+      ],
+      "parameterTableConfig": {
+        "userColumns": [
+          {
+            "columnName": "Manual Time(mins)",
+            "value": 1
+          },
+          {
+            "columnName": "Hourly Cost",
+            "value": 1
+          }
+        ],
+        "parameterValues": {
+          "86385670": {
+            "0": "10",
+            "1": "56"
+          },
+          "100371967": {
+            "0": "8",
+            "1": "98"
+          },
+          "229780001": {
+            "0": "84",
+            "1": "56"
+          },
+          "406773923": {
+            "0": "54",
+            "1": "8"
+          },
+          "427363193": {
+            "0": "58",
+            "1": "8"
+          },
+          "433466366": {
+            "0": "89",
+            "1": "70"
+          },
+          "545680296": {
+            "0": "58",
+            "1": "89"
+          },
+          "554765517": {
+            "0": "54",
+            "1": "89"
+          },
+          "740408590": {
+            "1": "78"
+          }
+        }
+      },
+      "instanceid": "76CDC-1274-C2",
+      "refreshOnce": true
+    },
+    {
+      "title": "##Dashboard_BusinessROI_time_saved##",
+      "type": "indicator",
+      "subtype": "indicator/numeric",
+      "oid": "5fad87bc92b0c81eb8df0a33",
+      "desc": null,
+      "source": "5df1d5a520b90412c0c3e2c3",
+      "datasource": {
+        "title": "Default-Cube",
+        "fullname": "LocalHost/Default-Cube",
+        "id": "aLOCALHOST_aDEFAULTLQAaCUBE",
+        "address": "LocalHost",
+        "database": "aDefaultLQAaCube"
+      },
+      "selection": null,
+      "metadata": {
+        "ignore": {
+          "dimensions": [],
+          "all": false
+        },
+        "panels": [
+          {
+            "name": "value",
+            "items": [
+              {
+                "jaql": {
+                  "type": "measure",
+                  "formula": "CASE\nWHEN(((SUM([AD79E-E2C], DUPCOUNT([AD79E-E2C]) * ALL([DD8BF-516])) - SUM([708CA-543]/60))/60) < 0) THEN 0\nELSE (SUM([AD79E-E2C], DUPCOUNT([AD79E-E2C]) * ALL([DD8BF-516])) - SUM([708CA-543]/60))/60\nEND",
+                  "context": {
+                    "[DD8BF-516]": {
+                      "table": "Jobs",
+                      "column": "ProcessId",
+                      "dim": "[Jobs.ProcessId]",
+                      "datatype": "numeric",
+                      "title": "@Process Baselines.Manual Time(mins)"
+                    },
+                    "[708CA-543]": {
+                      "table": "Jobs",
+                      "column": "RuntimeInSeconds",
+                      "dim": "[Jobs.RuntimeInSeconds]",
+                      "datatype": "numeric",
+                      "title": "RuntimeInSeconds"
+                    },
+                    "[AD79E-E2C]": {
+                      "table": "Jobs",
+                      "column": "ProcessId",
+                      "dim": "[Jobs.ProcessId]",
+                      "datatype": "numeric",
+                      "title": "ProcessId"
+                    }
+                  },
+                  "title": "##Dashboard_BusinessROI_hrs##"
+                },
+                "format": {
+                  "mask": {
+                    "abbreviations": {
+                      "t": true,
+                      "b": true,
+                      "m": true,
+                      "k": false
+                    },
+                    "decimals": 0,
+                    "number": {
+                      "separated": true
+                    }
+                  },
+                  "color": {
+                    "color": "#3471AD",
+                    "type": "color"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "secondary",
+            "items": []
+          },
+          {
+            "name": "min",
+            "items": []
+          },
+          {
+            "name": "max",
+            "items": []
+          },
+          {
+            "name": "filters",
+            "items": []
+          }
+        ]
+      },
+      "iconSmall": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAYCAYAAAC8/X7cAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkFDOTk4NjMxNzU1MTExRTM4QkE0QjUwRjg4NjAzOUM1IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkFDOTk4NjMyNzU1MTExRTM4QkE0QjUwRjg4NjAzOUM1Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QUM5OTg2MkY3NTUxMTFFMzhCQTRCNTBGODg2MDM5QzUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QUM5OTg2MzA3NTUxMTFFMzhCQTRCNTBGODg2MDM5QzUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4Ed6mDAAACVUlEQVR42uyYzytmURjHXWPCbsTkHxAyG1Ga1SSr2chWJFnIu2AW76zFQkqzkCl2RLGXpYVSFhZIfkzZyMbPMRYkkVyfh0P3feec+97z3iMppz6d4znnfu/z3POcHy/P9/2ct1xyc956kRmAev+xVL/EO77UNtSDD9Wufc+LKfCRqgxEZ9fzvEvHgafob68uXDpJIXEc+mkewx/YgH/YJqDYhePwnz62CSiOFQAOfqCagz4oCnTlQwcsM6YkhvMZ9RlTEmcGfsD3kH6Z8pEYE2Cln2f4yoVKSKZrhNzeD3QnIjjRjEYPz50ZvnKKPrltrY9GD/WZaREPQFK1v8FXFVgBVXnE7bkKlmz0ccpa35RClYF2RaB9Z5EKYWOd6ZsCkByTLUuO6cEnIylxQ7UZQVzGbYX0a/VJJWt9bQA4Ok/1WXYB2r/Sun9HeMEUz52bOnH0WZ92Vvo8d25cxCqIK6orTde4yts2w6Nr8DOTBzjgRD83w57fCutwCDNQSmAy7e3QLadjYPhfGJKXM+Yi4p7fCutwCDNQSmAZ9RlzEbqNKuebqKYDphZZcNjrcFAW0KigDi3ROVH2qAeWVh97HQ4+66tD60Ff2VNK2F2oU2OrhRpYCaTaaZYHViR9nD7N9jpdYLDnO7qrOdEPC2BWYzsIfp2YxYl+WABjMAy36u8daCRlrh0FoNUnZaz0w7ZRWTBJFmkv9ae0+1DsohZkkkX6oJ92H8o6gAQOH5l+/ViUPQKe1NgTOHxk2JWs9Al4UhdAl6MPvAi6AJzre+//lXjlci/AAOnMDanQIR59AAAAAElFTkSuQmCC",
+      "iconSmallWizard": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAYCAYAAAC8/X7cAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkFDOTk4NjMxNzU1MTExRTM4QkE0QjUwRjg4NjAzOUM1IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkFDOTk4NjMyNzU1MTExRTM4QkE0QjUwRjg4NjAzOUM1Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QUM5OTg2MkY3NTUxMTFFMzhCQTRCNTBGODg2MDM5QzUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QUM5OTg2MzA3NTUxMTFFMzhCQTRCNTBGODg2MDM5QzUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4Ed6mDAAACVUlEQVR42uyYzytmURjHXWPCbsTkHxAyG1Ga1SSr2chWJFnIu2AW76zFQkqzkCl2RLGXpYVSFhZIfkzZyMbPMRYkkVyfh0P3feec+97z3iMppz6d4znnfu/z3POcHy/P9/2ct1xyc956kRmAev+xVL/EO77UNtSDD9Wufc+LKfCRqgxEZ9fzvEvHgafob68uXDpJIXEc+mkewx/YgH/YJqDYhePwnz62CSiOFQAOfqCagz4oCnTlQwcsM6YkhvMZ9RlTEmcGfsD3kH6Z8pEYE2Cln2f4yoVKSKZrhNzeD3QnIjjRjEYPz50ZvnKKPrltrY9GD/WZaREPQFK1v8FXFVgBVXnE7bkKlmz0ccpa35RClYF2RaB9Z5EKYWOd6ZsCkByTLUuO6cEnIylxQ7UZQVzGbYX0a/VJJWt9bQA4Ok/1WXYB2r/Sun9HeMEUz52bOnH0WZ92Vvo8d25cxCqIK6orTde4yts2w6Nr8DOTBzjgRD83w57fCutwCDNQSmAy7e3QLadjYPhfGJKXM+Yi4p7fCutwCDNQSmAZ9RlzEbqNKuebqKYDphZZcNjrcFAW0KigDi3ROVH2qAeWVh97HQ4+66tD60Ff2VNK2F2oU2OrhRpYCaTaaZYHViR9nD7N9jpdYLDnO7qrOdEPC2BWYzsIfp2YxYl+WABjMAy36u8daCRlrh0FoNUnZaz0w7ZRWTBJFmkv9ae0+1DsohZkkkX6oJ92H8o6gAQOH5l+/ViUPQKe1NgTOHxk2JWs9Al4UhdAl6MPvAi6AJzre+//lXjlci/AAOnMDanQIR59AAAAAElFTkSuQmCC",
+      "style": {
+        "subtype": "simple",
+        "skin": "horizontal",
+        "components": {
+          "title": {
+            "inactive": false,
+            "enabled": true
+          },
+          "icon": {
+            "inactive": true,
+            "enabled": true
+          },
+          "secondaryTitle": {
+            "inactive": true,
+            "enabled": true
+          }
+        },
+        "indicator/numeric": {
+          "subtype": "simple",
+          "skin": "vertical",
+          "components": {
+            "title": {
+              "inactive": false,
+              "enabled": true
+            },
+            "icon": {
+              "inactive": false,
+              "enabled": true
+            },
+            "secondaryTitle": {
+              "inactive": true,
+              "enabled": true
+            }
+          }
+        },
+        "indicator/gauge": {
+          "subtype": "round",
+          "skin": "1",
+          "components": {
+            "ticks": {
+              "inactive": false,
+              "enabled": true
+            },
+            "labels": {
+              "inactive": false,
+              "enabled": true
+            },
+            "title": {
+              "inactive": false,
+              "enabled": true
+            },
+            "secondaryTitle": {
+              "inactive": true,
+              "enabled": true
+            }
+          }
+        },
+        "narration": {
+          "enabled": false,
+          "display": "above",
+          "format": "bullets",
+          "verbosity": "medium",
+          "up_sentiment": "good",
+          "aggregation": "sum",
+          "labels": []
+        }
+      },
+      "instanceId": "51C1F-CA34-A8",
+      "queryStartTime": "2020-11-12T14:07:23",
+      "currentPage": 0,
+      "drawing": true,
+      "widgetTimingLoged": false,
+      "continuousDates": false,
+      "nullAsZero": false,
+      "minDate": 0,
+      "maxDate": 0,
+      "tickLevel": null,
+      "forcedRedraw": false,
+      "inFullScreenMode": false,
+      "realTimeRefreshing": false,
+      "options": {
+        "dashboardFiltersMode": "filter",
+        "selector": false,
+        "disallowSelector": true,
+        "triggersDomready": true,
+        "autoUpdateOnEveryChange": true,
+        "supportsHierarchies": false
+      },
+      "dashboardid": "5fad87bc92b0c81eb8df0a2f",
+      "canEditFilters": false,
+      "script_old": null,
+      "script": null,
+      "instanceid": "8871F-1AA9-D3",
+      "viewState": {
+        "activeTab": "design"
+      }
+    },
+    {
+      "title": "##Dashboard_BusinessROI_money_saved##",
+      "type": "indicator",
+      "subtype": "indicator/numeric",
+      "oid": "5fad87bc92b0c81eb8df0a34",
+      "desc": null,
+      "source": "5df1d5a520b90412c0c3e2c3",
+      "datasource": {
+        "title": "Default-Cube",
+        "fullname": "LocalHost/Default-Cube",
+        "id": "aLOCALHOST_aDEFAULTLQAaCUBE",
+        "address": "LocalHost",
+        "database": "aDefaultLQAaCube"
+      },
+      "selection": null,
+      "metadata": {
+        "ignore": {
+          "dimensions": [],
+          "all": false
+        },
+        "panels": [
+          {
+            "name": "value",
+            "items": [
+              {
+                "jaql": {
+                  "type": "measure",
+                  "formula": "CASE\nWHEN(sum([747A4-80F],((( all([672EA-CD8]) *dupcount([747A4-80F]) -([5D16F-B4E]/60)  )) /60) * all([B1E8E-FB5]))  < 0) THEN 0\nELSE sum([747A4-80F],((( all([672EA-CD8]) *dupcount([747A4-80F]) -([5D16F-B4E]/60)  )) /60) * all([B1E8E-FB5])) \nEND",
+                  "context": {
+                    "[672EA-CD8]": {
+                      "table": "Jobs",
+                      "column": "ProcessId",
+                      "dim": "[Jobs.ProcessId]",
+                      "datatype": "numeric",
+                      "title": "@Process Baselines.Manual Time(mins)"
+                    },
+                    "[B1E8E-FB5]": {
+                      "table": "Jobs",
+                      "column": "ProcessId",
+                      "dim": "[Jobs.ProcessId]",
+                      "datatype": "numeric",
+                      "title": "@Process Baselines.Hourly Cost"
+                    },
+                    "[5D16F-B4E]": {
+                      "table": "Jobs",
+                      "column": "RuntimeInSeconds",
+                      "dim": "[Jobs.RuntimeInSeconds]",
+                      "datatype": "numeric",
+                      "agg": "sum",
+                      "title": "Total RuntimeInSeconds"
+                    },
+                    "[E0CC1-D9F]": {
+                      "table": "Jobs",
+                      "column": "RuntimeInSeconds",
+                      "dim": "[Jobs.RuntimeInSeconds]",
+                      "datatype": "numeric",
+                      "title": "RuntimeInSeconds"
+                    },
+                    "[747A4-80F]": {
+                      "table": "Jobs",
+                      "column": "ProcessId",
+                      "dim": "[Jobs.ProcessId]",
+                      "datatype": "numeric",
+                      "title": "ProcessId"
+                    }
+                  },
+                  "title": "##Dashboard_BusinessROI_dollars##"
+                },
+                "format": {
+                  "mask": {
+                    "abbreviations": {
+                      "t": true,
+                      "b": true,
+                      "m": true,
+                      "k": false
+                    },
+                    "decimals": 0,
+                    "currency": {
+                      "symbol": "$",
+                      "position": "pre"
+                    }
+                  },
+                  "color": {
+                    "color": "#3471AD",
+                    "type": "color"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "secondary",
+            "items": [
+              {
+                "jaql": {
+                  "type": "measure",
+                  "formula": "CASE\nWHEN 500000/(sum([1F2EE-500],((( all([1AF57-3F8]) *dupcount([1F2EE-500]) -([469E3-587]/60)  )) /60) * all([9D7F6-521])) /([6140E-AB8])) < 0 THEN 0\nELSE 500000/(sum([1F2EE-500],((( all([1AF57-3F8]) *dupcount([1F2EE-500]) -([469E3-587]/60)  )) /60) * all([9D7F6-521])) /([6140E-AB8]))\nEND",
+                  "context": {
+                    "[1AF57-3F8]": {
+                      "table": "Jobs",
+                      "column": "ProcessId",
+                      "dim": "[Jobs.ProcessId]",
+                      "datatype": "numeric",
+                      "title": "@Process Baselines.Manual Time(mins)"
+                    },
+                    "[9D7F6-521]": {
+                      "table": "Jobs",
+                      "column": "ProcessId",
+                      "dim": "[Jobs.ProcessId]",
+                      "datatype": "numeric",
+                      "title": "@Process Baselines.Hourly Cost"
+                    },
+                    "[6140E-AB8]": {
+                      "table": "Jobs",
+                      "column": "EndTime",
+                      "dim": "[Jobs.EndTime (Calendar)]",
+                      "datatype": "datetime",
+                      "merged": true,
+                      "level": "days",
+                      "title": "# of unique Days in EndTime",
+                      "agg": "count"
+                    },
+                    "[469E3-587]": {
+                      "table": "Jobs",
+                      "column": "RuntimeInSeconds",
+                      "dim": "[Jobs.RuntimeInSeconds]",
+                      "datatype": "numeric",
+                      "agg": "sum",
+                      "title": "Total RuntimeInSeconds"
+                    },
+                    "[9688F-4E8]": {
+                      "table": "Jobs",
+                      "column": "RuntimeInSeconds",
+                      "dim": "[Jobs.RuntimeInSeconds]",
+                      "datatype": "numeric",
+                      "title": "RuntimeInSeconds"
+                    },
+                    "[1F2EE-500]": {
+                      "table": "Jobs",
+                      "column": "ProcessId",
+                      "dim": "[Jobs.ProcessId]",
+                      "datatype": "numeric",
+                      "title": "ProcessId"
+                    }
+                  },
+                  "title": "##Dashboard_BusinessROI_days_to_goal##"
+                },
+                "format": {
+                  "mask": {
+                    "type": "number",
+                    "abbreviations": {
+                      "t": true,
+                      "b": true,
+                      "m": true,
+                      "k": false
+                    },
+                    "separated": true,
+                    "decimals": "auto",
+                    "isdefault": true
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "max",
+            "items": [
+              {
+                "jaql": {
+                  "formula": "100",
+                  "title": "100 (default)"
+                },
+                "format": {
+                  "mask": {
+                    "type": "number",
+                    "abbreviations": {
+                      "t": true,
+                      "b": true,
+                      "m": true,
+                      "k": false
+                    },
+                    "separated": true,
+                    "decimals": "auto",
+                    "isdefault": true
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "filters",
+            "items": []
+          }
+        ]
+      },
+      "iconSmall": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAYCAYAAAC8/X7cAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkFDOTk4NjMxNzU1MTExRTM4QkE0QjUwRjg4NjAzOUM1IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkFDOTk4NjMyNzU1MTExRTM4QkE0QjUwRjg4NjAzOUM1Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QUM5OTg2MkY3NTUxMTFFMzhCQTRCNTBGODg2MDM5QzUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QUM5OTg2MzA3NTUxMTFFMzhCQTRCNTBGODg2MDM5QzUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4Ed6mDAAACVUlEQVR42uyYzytmURjHXWPCbsTkHxAyG1Ga1SSr2chWJFnIu2AW76zFQkqzkCl2RLGXpYVSFhZIfkzZyMbPMRYkkVyfh0P3feec+97z3iMppz6d4znnfu/z3POcHy/P9/2ct1xyc956kRmAev+xVL/EO77UNtSDD9Wufc+LKfCRqgxEZ9fzvEvHgafob68uXDpJIXEc+mkewx/YgH/YJqDYhePwnz62CSiOFQAOfqCagz4oCnTlQwcsM6YkhvMZ9RlTEmcGfsD3kH6Z8pEYE2Cln2f4yoVKSKZrhNzeD3QnIjjRjEYPz50ZvnKKPrltrY9GD/WZaREPQFK1v8FXFVgBVXnE7bkKlmz0ccpa35RClYF2RaB9Z5EKYWOd6ZsCkByTLUuO6cEnIylxQ7UZQVzGbYX0a/VJJWt9bQA4Ok/1WXYB2r/Sun9HeMEUz52bOnH0WZ92Vvo8d25cxCqIK6orTde4yts2w6Nr8DOTBzjgRD83w57fCutwCDNQSmAy7e3QLadjYPhfGJKXM+Yi4p7fCutwCDNQSmAZ9RlzEbqNKuebqKYDphZZcNjrcFAW0KigDi3ROVH2qAeWVh97HQ4+66tD60Ff2VNK2F2oU2OrhRpYCaTaaZYHViR9nD7N9jpdYLDnO7qrOdEPC2BWYzsIfp2YxYl+WABjMAy36u8daCRlrh0FoNUnZaz0w7ZRWTBJFmkv9ae0+1DsohZkkkX6oJ92H8o6gAQOH5l+/ViUPQKe1NgTOHxk2JWs9Al4UhdAl6MPvAi6AJzre+//lXjlci/AAOnMDanQIR59AAAAAElFTkSuQmCC",
+      "iconSmallWizard": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAYCAYAAAC8/X7cAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkFDOTk4NjMxNzU1MTExRTM4QkE0QjUwRjg4NjAzOUM1IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkFDOTk4NjMyNzU1MTExRTM4QkE0QjUwRjg4NjAzOUM1Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QUM5OTg2MkY3NTUxMTFFMzhCQTRCNTBGODg2MDM5QzUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QUM5OTg2MzA3NTUxMTFFMzhCQTRCNTBGODg2MDM5QzUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4Ed6mDAAACVUlEQVR42uyYzytmURjHXWPCbsTkHxAyG1Ga1SSr2chWJFnIu2AW76zFQkqzkCl2RLGXpYVSFhZIfkzZyMbPMRYkkVyfh0P3feec+97z3iMppz6d4znnfu/z3POcHy/P9/2ct1xyc956kRmAev+xVL/EO77UNtSDD9Wufc+LKfCRqgxEZ9fzvEvHgafob68uXDpJIXEc+mkewx/YgH/YJqDYhePwnz62CSiOFQAOfqCagz4oCnTlQwcsM6YkhvMZ9RlTEmcGfsD3kH6Z8pEYE2Cln2f4yoVKSKZrhNzeD3QnIjjRjEYPz50ZvnKKPrltrY9GD/WZaREPQFK1v8FXFVgBVXnE7bkKlmz0ccpa35RClYF2RaB9Z5EKYWOd6ZsCkByTLUuO6cEnIylxQ7UZQVzGbYX0a/VJJWt9bQA4Ok/1WXYB2r/Sun9HeMEUz52bOnH0WZ92Vvo8d25cxCqIK6orTde4yts2w6Nr8DOTBzjgRD83w57fCutwCDNQSmAy7e3QLadjYPhfGJKXM+Yi4p7fCutwCDNQSmAZ9RlzEbqNKuebqKYDphZZcNjrcFAW0KigDi3ROVH2qAeWVh97HQ4+66tD60Ff2VNK2F2oU2OrhRpYCaTaaZYHViR9nD7N9jpdYLDnO7qrOdEPC2BWYzsIfp2YxYl+WABjMAy36u8daCRlrh0FoNUnZaz0w7ZRWTBJFmkv9ae0+1DsohZkkkX6oJ92H8o6gAQOH5l+/ViUPQKe1NgTOHxk2JWs9Al4UhdAl6MPvAi6AJzre+//lXjlci/AAOnMDanQIR59AAAAAElFTkSuQmCC",
+      "style": {
+        "subtype": "simple",
+        "skin": "horizontal",
+        "components": {
+          "title": {
+            "inactive": false,
+            "enabled": true
+          },
+          "icon": {
+            "inactive": true,
+            "enabled": true
+          },
+          "secondaryTitle": {
+            "inactive": true,
+            "enabled": true
+          }
+        },
+        "indicator/numeric": {
+          "subtype": "simple",
+          "skin": "vertical",
+          "components": {
+            "title": {
+              "inactive": false,
+              "enabled": true
+            },
+            "icon": {
+              "inactive": false,
+              "enabled": true
+            },
+            "secondaryTitle": {
+              "inactive": true,
+              "enabled": true
+            }
+          }
+        },
+        "indicator/gauge": {
+          "subtype": "round",
+          "skin": "1",
+          "components": {
+            "ticks": {
+              "inactive": false,
+              "enabled": true
+            },
+            "labels": {
+              "inactive": false,
+              "enabled": true
+            },
+            "title": {
+              "inactive": false,
+              "enabled": true
+            },
+            "secondaryTitle": {
+              "inactive": true,
+              "enabled": true
+            }
+          }
+        },
+        "narration": {
+          "enabled": false,
+          "display": "above",
+          "format": "bullets",
+          "verbosity": "medium",
+          "up_sentiment": "good",
+          "aggregation": "sum",
+          "labels": []
+        }
+      },
+      "instanceId": "4A499-8CAD-77",
+      "queryStartTime": "2020-04-08T00:16:38",
+      "currentPage": 0,
+      "drawing": true,
+      "widgetTimingLoged": false,
+      "continuousDates": false,
+      "nullAsZero": false,
+      "minDate": 0,
+      "maxDate": 0,
+      "tickLevel": null,
+      "forcedRedraw": false,
+      "inFullScreenMode": false,
+      "realTimeRefreshing": false,
+      "options": {
+        "dashboardFiltersMode": "filter",
+        "selector": false,
+        "disallowSelector": true,
+        "triggersDomready": true,
+        "autoUpdateOnEveryChange": true,
+        "supportsHierarchies": false
+      },
+      "dashboardid": "5fad87bc92b0c81eb8df0a2f",
+      "canEditFilters": false,
+      "script_old": null,
+      "script": null,
+      "instanceid": "8871F-1AA9-D3",
+      "viewState": {
+        "activeTab": "filters"
+      }
+    },
+    {
+      "title": "##Dashboard_BusinessROI_productivity##",
+      "type": "indicator",
+      "subtype": "indicator/numeric",
+      "oid": "5fad87bc92b0c81eb8df0a35",
+      "desc": null,
+      "source": "5df1d5a520b90412c0c3e2c8",
+      "datasource": {
+        "title": "Default-Cube",
+        "fullname": "LocalHost/Default-Cube",
+        "id": "aLOCALHOST_aDEFAULTLQAaCUBE",
+        "address": "LocalHost",
+        "database": "aDefaultLQAaCube"
+      },
+      "selection": null,
+      "metadata": {
+        "ignore": {
+          "dimensions": [],
+          "all": false
+        },
+        "panels": [
+          {
+            "name": "value",
+            "items": [
+              {
+                "jaql": {
+                  "type": "measure",
+                  "formula": "Sum([78D12-310])/3600",
+                  "context": {
+                    "[78D12-310]": {
+                      "table": "Jobs",
+                      "column": "RuntimeInSeconds",
+                      "dim": "[Jobs.RuntimeInSeconds]",
+                      "datatype": "numeric",
+                      "agg": "sum",
+                      "title": "Total RuntimeInSeconds"
+                    }
+                  },
+                  "title": "##Dashboard_BusinessROI_robot_hours##"
+                },
+                "format": {
+                  "mask": {
+                    "abbreviations": {
+                      "t": true,
+                      "b": true,
+                      "m": true,
+                      "k": false
+                    },
+                    "decimals": 0,
+                    "number": {
+                      "separated": true
+                    }
+                  },
+                  "color": {
+                    "color": "#3471AD",
+                    "type": "color"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "secondary",
+            "items": []
+          },
+          {
+            "name": "min",
+            "items": []
+          },
+          {
+            "name": "max",
+            "items": []
+          },
+          {
+            "name": "filters",
+            "items": []
+          }
+        ]
+      },
+      "iconSmall": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAYCAYAAAC8/X7cAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkFDOTk4NjMxNzU1MTExRTM4QkE0QjUwRjg4NjAzOUM1IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkFDOTk4NjMyNzU1MTExRTM4QkE0QjUwRjg4NjAzOUM1Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QUM5OTg2MkY3NTUxMTFFMzhCQTRCNTBGODg2MDM5QzUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QUM5OTg2MzA3NTUxMTFFMzhCQTRCNTBGODg2MDM5QzUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4Ed6mDAAACVUlEQVR42uyYzytmURjHXWPCbsTkHxAyG1Ga1SSr2chWJFnIu2AW76zFQkqzkCl2RLGXpYVSFhZIfkzZyMbPMRYkkVyfh0P3feec+97z3iMppz6d4znnfu/z3POcHy/P9/2ct1xyc956kRmAev+xVL/EO77UNtSDD9Wufc+LKfCRqgxEZ9fzvEvHgafob68uXDpJIXEc+mkewx/YgH/YJqDYhePwnz62CSiOFQAOfqCagz4oCnTlQwcsM6YkhvMZ9RlTEmcGfsD3kH6Z8pEYE2Cln2f4yoVKSKZrhNzeD3QnIjjRjEYPz50ZvnKKPrltrY9GD/WZaREPQFK1v8FXFVgBVXnE7bkKlmz0ccpa35RClYF2RaB9Z5EKYWOd6ZsCkByTLUuO6cEnIylxQ7UZQVzGbYX0a/VJJWt9bQA4Ok/1WXYB2r/Sun9HeMEUz52bOnH0WZ92Vvo8d25cxCqIK6orTde4yts2w6Nr8DOTBzjgRD83w57fCutwCDNQSmAy7e3QLadjYPhfGJKXM+Yi4p7fCutwCDNQSmAZ9RlzEbqNKuebqKYDphZZcNjrcFAW0KigDi3ROVH2qAeWVh97HQ4+66tD60Ff2VNK2F2oU2OrhRpYCaTaaZYHViR9nD7N9jpdYLDnO7qrOdEPC2BWYzsIfp2YxYl+WABjMAy36u8daCRlrh0FoNUnZaz0w7ZRWTBJFmkv9ae0+1DsohZkkkX6oJ92H8o6gAQOH5l+/ViUPQKe1NgTOHxk2JWs9Al4UhdAl6MPvAi6AJzre+//lXjlci/AAOnMDanQIR59AAAAAElFTkSuQmCC",
+      "iconSmallWizard": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAYCAYAAAC8/X7cAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkFDOTk4NjMxNzU1MTExRTM4QkE0QjUwRjg4NjAzOUM1IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkFDOTk4NjMyNzU1MTExRTM4QkE0QjUwRjg4NjAzOUM1Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QUM5OTg2MkY3NTUxMTFFMzhCQTRCNTBGODg2MDM5QzUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QUM5OTg2MzA3NTUxMTFFMzhCQTRCNTBGODg2MDM5QzUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4Ed6mDAAACVUlEQVR42uyYzytmURjHXWPCbsTkHxAyG1Ga1SSr2chWJFnIu2AW76zFQkqzkCl2RLGXpYVSFhZIfkzZyMbPMRYkkVyfh0P3feec+97z3iMppz6d4znnfu/z3POcHy/P9/2ct1xyc956kRmAev+xVL/EO77UNtSDD9Wufc+LKfCRqgxEZ9fzvEvHgafob68uXDpJIXEc+mkewx/YgH/YJqDYhePwnz62CSiOFQAOfqCagz4oCnTlQwcsM6YkhvMZ9RlTEmcGfsD3kH6Z8pEYE2Cln2f4yoVKSKZrhNzeD3QnIjjRjEYPz50ZvnKKPrltrY9GD/WZaREPQFK1v8FXFVgBVXnE7bkKlmz0ccpa35RClYF2RaB9Z5EKYWOd6ZsCkByTLUuO6cEnIylxQ7UZQVzGbYX0a/VJJWt9bQA4Ok/1WXYB2r/Sun9HeMEUz52bOnH0WZ92Vvo8d25cxCqIK6orTde4yts2w6Nr8DOTBzjgRD83w57fCutwCDNQSmAy7e3QLadjYPhfGJKXM+Yi4p7fCutwCDNQSmAZ9RlzEbqNKuebqKYDphZZcNjrcFAW0KigDi3ROVH2qAeWVh97HQ4+66tD60Ff2VNK2F2oU2OrhRpYCaTaaZYHViR9nD7N9jpdYLDnO7qrOdEPC2BWYzsIfp2YxYl+WABjMAy36u8daCRlrh0FoNUnZaz0w7ZRWTBJFmkv9ae0+1DsohZkkkX6oJ92H8o6gAQOH5l+/ViUPQKe1NgTOHxk2JWs9Al4UhdAl6MPvAi6AJzre+//lXjlci/AAOnMDanQIR59AAAAAElFTkSuQmCC",
+      "style": {
+        "subtype": "simple",
+        "skin": "horizontal",
+        "components": {
+          "title": {
+            "inactive": false,
+            "enabled": true
+          },
+          "icon": {
+            "inactive": true,
+            "enabled": true
+          },
+          "secondaryTitle": {
+            "inactive": true,
+            "enabled": true
+          }
+        },
+        "indicator/numeric": {
+          "subtype": "simple",
+          "skin": "vertical",
+          "components": {
+            "title": {
+              "inactive": false,
+              "enabled": true
+            },
+            "icon": {
+              "inactive": false,
+              "enabled": true
+            },
+            "secondaryTitle": {
+              "inactive": true,
+              "enabled": true
+            }
+          }
+        },
+        "indicator/gauge": {
+          "subtype": "round",
+          "skin": "1",
+          "components": {
+            "ticks": {
+              "inactive": false,
+              "enabled": true
+            },
+            "labels": {
+              "inactive": false,
+              "enabled": true
+            },
+            "title": {
+              "inactive": false,
+              "enabled": true
+            },
+            "secondaryTitle": {
+              "inactive": true,
+              "enabled": true
+            }
+          }
+        },
+        "narration": {
+          "enabled": false,
+          "display": "above",
+          "format": "bullets",
+          "verbosity": "medium",
+          "up_sentiment": "good",
+          "aggregation": "sum",
+          "labels": []
+        }
+      },
+      "instanceId": "A1171-F5A2-4A",
+      "queryStartTime": "2019-12-12T17:26:19",
+      "currentPage": 0,
+      "drawing": true,
+      "widgetTimingLoged": false,
+      "continuousDates": false,
+      "nullAsZero": false,
+      "minDate": 0,
+      "maxDate": 0,
+      "tickLevel": null,
+      "forcedRedraw": false,
+      "inFullScreenMode": false,
+      "realTimeRefreshing": false,
+      "options": {
+        "dashboardFiltersMode": "filter",
+        "selector": false,
+        "disallowSelector": true,
+        "triggersDomready": true,
+        "autoUpdateOnEveryChange": true,
+        "supportsHierarchies": false
+      },
+      "dashboardid": "5fad87bc92b0c81eb8df0a2f",
+      "canEditFilters": false,
+      "script_old": null,
+      "script": null,
+      "instanceid": "02D33-A474-67",
+      "viewState": {
+        "activeTab": "filters"
+      }
+    },
+    {
+      "title": "##Dashboard_BusinessROI_cumulative_time_saved##",
+      "type": "chart/column",
+      "subtype": "column/stackedcolumn",
+      "oid": "5fad87bc92b0c81eb8df0a37",
+      "desc": null,
+      "source": "5df1d5a520b90412c0c3e2c6",
+      "datasource": {
+        "title": "Default-Cube",
+        "fullname": "LocalHost/Default-Cube",
+        "id": "aLOCALHOST_aDEFAULTLQAaCUBE",
+        "address": "LocalHost",
+        "database": "aDefaultLQAaCube"
+      },
+      "selection": null,
+      "metadata": {
+        "ignore": {
+          "dimensions": [],
+          "all": false
+        },
+        "panels": [
+          {
+            "name": "categories",
+            "items": [
+              {
+                "jaql": {
+                  "table": "Jobs",
+                  "column": "EndTime",
+                  "dim": "[Jobs.EndTime (Calendar)]",
+                  "datatype": "datetime",
+                  "merged": true,
+                  "level": "weeks",
+                  "title": "##Dashboard_Queues_week##",
+                  "firstday": "mon"
+                },
+                "format": {
+                  "mask": {
+                    "years": "yyyy",
+                    "quarters": "yyyy Q",
+                    "months": "MM/yyyy",
+                    "weeks": "MMM dd",
+                    "days": "MMM d",
+                    "minutes": "HH:mm"
+                  }
+                },
+                "hierarchies": [
+                  "calendar",
+                  "calendar - weeks"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "values",
+            "items": [
+              {
+                "jaql": {
+                  "type": "measure",
+                  "formula": "(SUM([07C0D-B25], DUPCOUNT([07C0D-B25]) * ALL([B1E60-146])) - SUM([82DCC-B80]/60))/60\n",
+                  "context": {
+                    "[B1E60-146]": {
+                      "table": "Jobs",
+                      "column": "ProcessId",
+                      "dim": "[Jobs.ProcessId]",
+                      "datatype": "numeric",
+                      "title": "@Process Baselines.Manual Time(mins)"
+                    },
+                    "[82DCC-B80]": {
+                      "table": "Jobs",
+                      "column": "RuntimeInSeconds",
+                      "dim": "[Jobs.RuntimeInSeconds]",
+                      "datatype": "numeric",
+                      "title": "RuntimeInSeconds"
+                    },
+                    "[07C0D-B25]": {
+                      "table": "Jobs",
+                      "column": "ProcessId",
+                      "dim": "[Jobs.ProcessId]",
+                      "datatype": "numeric",
+                      "title": "ProcessId"
+                    }
+                  },
+                  "title": "##Dashboard_BusinessROI_cumulative_hours_saved##"
+                },
+                "format": {
+                  "mask": {
+                    "type": "number",
+                    "abbreviations": {
+                      "t": true,
+                      "b": true,
+                      "m": true,
+                      "k": true
+                    },
+                    "separated": true,
+                    "decimals": "auto",
+                    "isdefault": true
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "break by",
+            "items": [
+              {
+                "jaql": {
+                  "table": "Jobs",
+                  "column": "ProcessName",
+                  "dim": "[Jobs.ProcessName]",
+                  "datatype": "text",
+                  "merged": true,
+                  "title": "##Dashboard_BusinessROI_process_name##"
+                },
+                "format": {
+                  "members": {
+                    "AddAdditionalLogFieldEveryHour": {
+                      "color": "#3471AD",
+                      "title": "AddAdditionalLogFieldEveryHour",
+                      "sortData": "AddAdditionalLogFieldEveryHour",
+                      "inResultset": true
+                    },
+                    "DispatchQueueItem": {
+                      "color": "#F66500",
+                      "title": "DispatchQueueItem",
+                      "sortData": "DispatchQueueItem",
+                      "inResultset": true
+                    },
+                    "Log_Bool": {
+                      "color": "#FFC400",
+                      "title": "Log_Bool",
+                      "sortData": "Log_Bool",
+                      "inResultset": true
+                    },
+                    "Log_DateTime": {
+                      "color": "#42BC39",
+                      "title": "Log_DateTime",
+                      "sortData": "Log_DateTime",
+                      "inResultset": true
+                    },
+                    "Log_Double": {
+                      "color": "#3c82c7",
+                      "title": "Log_Double",
+                      "sortData": "Log_Double",
+                      "inResultset": true
+                    },
+                    "Log_Email": {
+                      "color": "#ff7311",
+                      "title": "Log_Email",
+                      "sortData": "Log_Email",
+                      "inResultset": true
+                    },
+                    "Log_Int": {
+                      "color": "#ffc917",
+                      "title": "Log_Int",
+                      "sortData": "Log_Int",
+                      "inResultset": true
+                    },
+                    "Log_String": {
+                      "color": "#4cd842",
+                      "title": "Log_String",
+                      "sortData": "Log_String",
+                      "inResultset": true
+                    },
+                    "Log_String_Date": {
+                      "color": "#408cd6",
+                      "title": "Log_String_Date",
+                      "sortData": "Log_String_Date",
+                      "inResultset": true
+                    },
+                    "Log_String_Time": {
+                      "color": "#ff7a1d",
+                      "title": "Log_String_Time",
+                      "sortData": "Log_String_Time",
+                      "inResultset": true
+                    },
+                    "Log_Uri": {
+                      "color": "#ffcc24",
+                      "title": "Log_Uri",
+                      "sortData": "Log_Uri",
+                      "inResultset": true
+                    },
+                    "ProcessQueue": {
+                      "color": "#52e846",
+                      "title": "ProcessQueue",
+                      "sortData": "ProcessQueue",
+                      "inResultset": true
+                    },
+                    "ProcessQueueItem": {
+                      "color": "#4595e4",
+                      "title": "ProcessQueueItem",
+                      "sortData": "ProcessQueueItem",
+                      "inResultset": true
+                    },
+                    "QueueItem_Bool": {
+                      "color": "#ff812a",
+                      "title": "QueueItem_Bool",
+                      "sortData": "QueueItem_Bool",
+                      "inResultset": true
+                    },
+                    "QueueItem_Int": {
+                      "color": "#ffcf31",
+                      "title": "QueueItem_Int",
+                      "sortData": "QueueItem_Int",
+                      "inResultset": true
+                    },
+                    "QueueItem_String": {
+                      "color": "#57f84b",
+                      "title": "QueueItem_String",
+                      "sortData": "QueueItem_String",
+                      "inResultset": true
+                    },
+                    "TypesNew": {
+                      "color": "#489df0",
+                      "title": "TypesNew",
+                      "sortData": "TypesNew",
+                      "inResultset": true
+                    },
+                    "yy": {
+                      "color": "#ff8733",
+                      "title": "yy",
+                      "sortData": "yy",
+                      "inResultset": true
+                    },
+                    "yy2": {
+                      "color": "#ffd23b",
+                      "title": "yy2",
+                      "sortData": "yy2",
+                      "inResultset": true
+                    },
+                    "CompleteTransactionItem": {
+                      "color": "#5dff51",
+                      "title": "CompleteTransactionItem",
+                      "sortData": "CompleteTransactionItem",
+                      "inResultset": true
+                    },
+                    "BlankProcess16": {
+                      "color": "#4ba2f9",
+                      "title": "BlankProcess16",
+                      "sortData": "BlankProcess16",
+                      "inResultset": true
+                    },
+                    "complete19": {
+                      "color": "#ff8b3b",
+                      "title": "complete19",
+                      "sortData": "complete19",
+                      "inResultset": true
+                    },
+                    "complete21": {
+                      "color": "#ffd342",
+                      "title": "complete21",
+                      "sortData": "complete21",
+                      "inResultset": true
+                    },
+                    "complete_multi": {
+                      "color": "#62ff56",
+                      "title": "complete_multi",
+                      "sortData": "complete_multi",
+                      "inResultset": true
+                    },
+                    "createerror": {
+                      "color": "#4da7ff",
+                      "title": "createerror",
+                      "sortData": "createerror"
+                    },
+                    "create_multi_steps": {
+                      "color": "#ff8f41",
+                      "title": "create_multi_steps",
+                      "sortData": "create_multi_steps"
+                    },
+                    "Log": {
+                      "color": "#ffd548",
+                      "title": "Log",
+                      "sortData": "Log",
+                      "inResultset": true
+                    },
+                    "LRWF2": {
+                      "color": "#66ff5b",
+                      "title": "LRWF2",
+                      "sortData": "LRWF2"
+                    },
+                    "LRWF_create17": {
+                      "color": "#50a8ff",
+                      "title": "LRWF_create17",
+                      "sortData": "LRWF_create17"
+                    },
+                    "LRWF_create21": {
+                      "color": "#ff9245",
+                      "title": "LRWF_create21",
+                      "sortData": "LRWF_create21"
+                    },
+                    "RandomSuccessOrFail": {
+                      "color": "#ffd64e",
+                      "title": "RandomSuccessOrFail",
+                      "sortData": "RandomSuccessOrFail",
+                      "inResultset": true
+                    },
+                    "TestQ": {
+                      "color": "#6aff5f",
+                      "title": "TestQ",
+                      "sortData": "TestQ",
+                      "inResultset": true
+                    },
+                    "TestQueue": {
+                      "color": "#53aaff",
+                      "title": "TestQueue",
+                      "sortData": "TestQueue"
+                    },
+                    "TF_UiBankWebApp": {
+                      "color": "#ff944a",
+                      "title": "TF_UiBankWebApp",
+                      "sortData": "TF_UiBankWebApp",
+                      "inResultset": true
+                    },
+                    "delay": {
+                      "color": "#ffd752",
+                      "title": "delay",
+                      "sortData": "delay",
+                      "inResultset": true
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "filters",
+            "items": []
+          }
+        ]
+      },
+      "iconSmall": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAYCAYAAAC8/X7cAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkFDOTk4NjMxNzU1MTExRTM4QkE0QjUwRjg4NjAzOUM1IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkFDOTk4NjMyNzU1MTExRTM4QkE0QjUwRjg4NjAzOUM1Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QUM5OTg2MkY3NTUxMTFFMzhCQTRCNTBGODg2MDM5QzUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QUM5OTg2MzA3NTUxMTFFMzhCQTRCNTBGODg2MDM5QzUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4Ed6mDAAACVUlEQVR42uyYzytmURjHXWPCbsTkHxAyG1Ga1SSr2chWJFnIu2AW76zFQkqzkCl2RLGXpYVSFhZIfkzZyMbPMRYkkVyfh0P3feec+97z3iMppz6d4znnfu/z3POcHy/P9/2ct1xyc956kRmAev+xVL/EO77UNtSDD9Wufc+LKfCRqgxEZ9fzvEvHgafob68uXDpJIXEc+mkewx/YgH/YJqDYhePwnz62CSiOFQAOfqCagz4oCnTlQwcsM6YkhvMZ9RlTEmcGfsD3kH6Z8pEYE2Cln2f4yoVKSKZrhNzeD3QnIjjRjEYPz50ZvnKKPrltrY9GD/WZaREPQFK1v8FXFVgBVXnE7bkKlmz0ccpa35RClYF2RaB9Z5EKYWOd6ZsCkByTLUuO6cEnIylxQ7UZQVzGbYX0a/VJJWt9bQA4Ok/1WXYB2r/Sun9HeMEUz52bOnH0WZ92Vvo8d25cxCqIK6orTde4yts2w6Nr8DOTBzjgRD83w57fCutwCDNQSmAy7e3QLadjYPhfGJKXM+Yi4p7fCutwCDNQSmAZ9RlzEbqNKuebqKYDphZZcNjrcFAW0KigDi3ROVH2qAeWVh97HQ4+66tD60Ff2VNK2F2oU2OrhRpYCaTaaZYHViR9nD7N9jpdYLDnO7qrOdEPC2BWYzsIfp2YxYl+WABjMAy36u8daCRlrh0FoNUnZaz0w7ZRWTBJFmkv9ae0+1DsohZkkkX6oJ92H8o6gAQOH5l+/ViUPQKe1NgTOHxk2JWs9Al4UhdAl6MPvAi6AJzre+//lXjlci/AAOnMDanQIR59AAAAAElFTkSuQmCC",
+      "iconSmallWizard": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAYCAYAAAC8/X7cAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkFDOTk4NjMxNzU1MTExRTM4QkE0QjUwRjg4NjAzOUM1IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkFDOTk4NjMyNzU1MTExRTM4QkE0QjUwRjg4NjAzOUM1Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QUM5OTg2MkY3NTUxMTFFMzhCQTRCNTBGODg2MDM5QzUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QUM5OTg2MzA3NTUxMTFFMzhCQTRCNTBGODg2MDM5QzUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4Ed6mDAAACVUlEQVR42uyYzytmURjHXWPCbsTkHxAyG1Ga1SSr2chWJFnIu2AW76zFQkqzkCl2RLGXpYVSFhZIfkzZyMbPMRYkkVyfh0P3feec+97z3iMppz6d4znnfu/z3POcHy/P9/2ct1xyc956kRmAev+xVL/EO77UNtSDD9Wufc+LKfCRqgxEZ9fzvEvHgafob68uXDpJIXEc+mkewx/YgH/YJqDYhePwnz62CSiOFQAOfqCagz4oCnTlQwcsM6YkhvMZ9RlTEmcGfsD3kH6Z8pEYE2Cln2f4yoVKSKZrhNzeD3QnIjjRjEYPz50ZvnKKPrltrY9GD/WZaREPQFK1v8FXFVgBVXnE7bkKlmz0ccpa35RClYF2RaB9Z5EKYWOd6ZsCkByTLUuO6cEnIylxQ7UZQVzGbYX0a/VJJWt9bQA4Ok/1WXYB2r/Sun9HeMEUz52bOnH0WZ92Vvo8d25cxCqIK6orTde4yts2w6Nr8DOTBzjgRD83w57fCutwCDNQSmAy7e3QLadjYPhfGJKXM+Yi4p7fCutwCDNQSmAZ9RlzEbqNKuebqKYDphZZcNjrcFAW0KigDi3ROVH2qAeWVh97HQ4+66tD60Ff2VNK2F2oU2OrhRpYCaTaaZYHViR9nD7N9jpdYLDnO7qrOdEPC2BWYzsIfp2YxYl+WABjMAy36u8daCRlrh0FoNUnZaz0w7ZRWTBJFmkv9ae0+1DsohZkkkX6oJ92H8o6gAQOH5l+/ViUPQKe1NgTOHxk2JWs9Al4UhdAl6MPvAi6AJzre+//lXjlci/AAOnMDanQIR59AAAAAElFTkSuQmCC",
+      "style": {
+        "legend": {
+          "enabled": true,
+          "position": "bottom"
+        },
+        "seriesLabels": {
+          "enabled": false,
+          "rotation": 0,
+          "labels": {
+            "enabled": true,
+            "stacked": true,
+            "stackedPercentage": false,
+            "types": {
+              "count": false,
+              "relative": false,
+              "percentage": false,
+              "totals": false
+            }
+          }
+        },
+        "xAxis": {
+          "enabled": true,
+          "ticks": true,
+          "labels": {
+            "enabled": true,
+            "rotation": 0
+          },
+          "title": {
+            "enabled": true,
+            "text": "Weeks"
+          },
+          "x2Title": {
+            "enabled": false
+          },
+          "gridLines": true,
+          "isIntervalEnabled": false
+        },
+        "yAxis": {
+          "inactive": false,
+          "enabled": true,
+          "ticks": true,
+          "labels": {
+            "enabled": true,
+            "rotation": 0
+          },
+          "title": {
+            "enabled": true,
+            "text": "##Dashboard_BusinessROI_cumulative_hours_saved##"
+          },
+          "gridLines": true,
+          "logarithmic": false,
+          "isIntervalEnabled": true,
+          "hideMinMax": false
+        },
+        "y2Axis": {
+          "inactive": true,
+          "enabled": true,
+          "ticks": true,
+          "labels": {
+            "enabled": true,
+            "rotation": 0
+          },
+          "title": {
+            "enabled": false
+          },
+          "gridLines": false,
+          "logarithmic": false,
+          "isIntervalEnabled": true,
+          "hideMinMax": false
+        },
+        "navigator": {
+          "enabled": true
+        },
+        "dataLimits": {
+          "seriesCapacity": 50,
+          "categoriesCapacity": 100000
+        },
+        "lineWidth": {
+          "width": "bold"
+        },
+        "markers": {
+          "enabled": false,
+          "fill": "filled",
+          "size": "small"
+        },
+        "narration": {
+          "enabled": false,
+          "display": "above",
+          "format": "bullets",
+          "verbosity": "medium",
+          "up_sentiment": "good",
+          "aggregation": "sum",
+          "labels": [
+            {
+              "id": "weeks",
+              "title": "weeks",
+              "singular": "weeks",
+              "plural": "weeks"
+            },
+            {
+              "id": "##Dashboard_BusinessROI_process_name##",
+              "title": "##Dashboard_BusinessROI_process_name##",
+              "singular": "##Dashboard_BusinessROI_process_name##",
+              "plural": "##Dashboard_BusinessROI_process_name##"
+            }
+          ]
+        }
+      },
+      "instanceId": "82414-913E-24",
+      "queryStartTime": "2020-05-06T18:40:05",
+      "currentPage": 0,
+      "drawing": true,
+      "widgetTimingLoged": false,
+      "continuousDates": false,
+      "nullAsZero": false,
+      "minDate": 1580965200000,
+      "maxDate": 1588219200000,
+      "tickLevel": "week",
+      "forcedRedraw": false,
+      "inFullScreenMode": false,
+      "realTimeRefreshing": false,
+      "options": {
+        "dashboardFiltersMode": "filter",
+        "selector": true,
+        "triggersDomready": true,
+        "autoUpdateOnEveryChange": true,
+        "drillToAnywhere": true,
+        "previousScrollerLocation": {
+          "min": 0,
+          "max": 7
+        }
+      },
+      "dashboardid": "5fad87bc92b0c81eb8df0a2f",
+      "canEditFilters": true,
+      "script_old": null,
+      "script": null,
+      "instanceid": "8C66C-D126-AD",
+      "disableSelctor": false,
+      "chart": {
+        "0": {},
+        "context": {},
+        "length": 1
+      },
+      "viewState": {
+        "activeTab": "design"
+      }
+    },
+    {
+      "title": "##Dashboard_BusinessROI_money_saved_per_process##",
+      "type": "chart/pie",
+      "subtype": "pie/donut",
+      "oid": "5fad87bc92b0c81eb8df0a36",
+      "desc": null,
+      "source": "5df1d5a520b90412c0c3e2c5",
+      "datasource": {
+        "title": "Default-Cube",
+        "fullname": "LocalHost/Default-Cube",
+        "id": "aLOCALHOST_aDEFAULTLQAaCUBE",
+        "address": "LocalHost",
+        "database": "aDefaultLQAaCube"
+      },
+      "selection": null,
+      "metadata": {
+        "ignore": {
+          "dimensions": [],
+          "all": false
+        },
+        "panels": [
+          {
+            "name": "categories",
+            "items": [
+              {
+                "jaql": {
+                  "table": "Jobs",
+                  "column": "ProcessName",
+                  "dim": "[Jobs.ProcessName]",
+                  "datatype": "text",
+                  "title": "##Dashboard_BusinessROI_processes##"
+                },
+                "format": {
+                  "members": {
+                    "AddAdditionalLogFieldEveryHour": {
+                      "color": "#3471AD",
+                      "title": "AddAdditionalLogFieldEveryHour",
+                      "sortData": "AddAdditionalLogFieldEveryHour",
+                      "inResultset": true
+                    },
+                    "BlankProcess16": {
+                      "color": "#F66500",
+                      "title": "BlankProcess16",
+                      "sortData": "BlankProcess16",
+                      "inResultset": true
+                    },
+                    "complete19": {
+                      "color": "#FFC400",
+                      "title": "complete19",
+                      "sortData": "complete19",
+                      "inResultset": true
+                    },
+                    "complete21": {
+                      "color": "#42BC39",
+                      "title": "complete21",
+                      "sortData": "complete21",
+                      "inResultset": true
+                    },
+                    "CompleteTransactionItem": {
+                      "color": "#3c82c7",
+                      "title": "CompleteTransactionItem",
+                      "sortData": "CompleteTransactionItem",
+                      "inResultset": true
+                    },
+                    "complete_multi": {
+                      "color": "#ff7311",
+                      "title": "complete_multi",
+                      "sortData": "complete_multi",
+                      "inResultset": true
+                    },
+                    "delay": {
+                      "color": "#ffc917",
+                      "title": "delay",
+                      "sortData": "delay",
+                      "inResultset": true
+                    },
+                    "DispatchQueueItem": {
+                      "color": "#4cd842",
+                      "title": "DispatchQueueItem",
+                      "sortData": "DispatchQueueItem",
+                      "inResultset": true
+                    },
+                    "Log": {
+                      "color": "#408cd6",
+                      "title": "Log",
+                      "sortData": "Log",
+                      "inResultset": true
+                    },
+                    "Log_Bool": {
+                      "color": "#ff7a1d",
+                      "title": "Log_Bool",
+                      "sortData": "Log_Bool",
+                      "inResultset": true
+                    },
+                    "Log_DateTime": {
+                      "color": "#ffcc24",
+                      "title": "Log_DateTime",
+                      "sortData": "Log_DateTime",
+                      "inResultset": true
+                    },
+                    "Log_Double": {
+                      "color": "#52e846",
+                      "title": "Log_Double",
+                      "sortData": "Log_Double",
+                      "inResultset": true
+                    },
+                    "Log_Email": {
+                      "color": "#4595e4",
+                      "title": "Log_Email",
+                      "sortData": "Log_Email",
+                      "inResultset": true
+                    },
+                    "Log_Int": {
+                      "color": "#ff812a",
+                      "title": "Log_Int",
+                      "sortData": "Log_Int",
+                      "inResultset": true
+                    },
+                    "Log_String": {
+                      "color": "#ffcf31",
+                      "title": "Log_String",
+                      "sortData": "Log_String",
+                      "inResultset": true
+                    },
+                    "Log_String_Date": {
+                      "color": "#57f84b",
+                      "title": "Log_String_Date",
+                      "sortData": "Log_String_Date",
+                      "inResultset": true
+                    },
+                    "Log_String_Time": {
+                      "color": "#489df0",
+                      "title": "Log_String_Time",
+                      "sortData": "Log_String_Time",
+                      "inResultset": true
+                    },
+                    "Log_Uri": {
+                      "color": "#ff8733",
+                      "title": "Log_Uri",
+                      "sortData": "Log_Uri",
+                      "inResultset": true
+                    },
+                    "LRWF2": {
+                      "color": "#ffd23b",
+                      "title": "LRWF2",
+                      "sortData": "LRWF2",
+                      "inResultset": true
+                    },
+                    "ProcessQueue": {
+                      "color": "#5dff51",
+                      "title": "ProcessQueue",
+                      "sortData": "ProcessQueue",
+                      "inResultset": true
+                    },
+                    "ProcessQueueItem": {
+                      "color": "#4ba2f9",
+                      "title": "ProcessQueueItem",
+                      "sortData": "ProcessQueueItem",
+                      "inResultset": true
+                    },
+                    "QueueItem_Bool": {
+                      "color": "#ff8b3b",
+                      "title": "QueueItem_Bool",
+                      "sortData": "QueueItem_Bool",
+                      "inResultset": true
+                    },
+                    "QueueItem_Int": {
+                      "color": "#ffd342",
+                      "title": "QueueItem_Int",
+                      "sortData": "QueueItem_Int",
+                      "inResultset": true
+                    },
+                    "QueueItem_String": {
+                      "color": "#62ff56",
+                      "title": "QueueItem_String",
+                      "sortData": "QueueItem_String",
+                      "inResultset": true
+                    },
+                    "RandomSuccessOrFail": {
+                      "color": "#4da7ff",
+                      "title": "RandomSuccessOrFail",
+                      "sortData": "RandomSuccessOrFail",
+                      "inResultset": true
+                    },
+                    "TestQ": {
+                      "color": "#ff8f41",
+                      "title": "TestQ",
+                      "sortData": "TestQ",
+                      "inResultset": true
+                    },
+                    "TF_UiBankWebApp": {
+                      "color": "#ffd548",
+                      "title": "TF_UiBankWebApp",
+                      "sortData": "TF_UiBankWebApp",
+                      "inResultset": true
+                    },
+                    "TypesNew": {
+                      "color": "#66ff5b",
+                      "title": "TypesNew",
+                      "sortData": "TypesNew",
+                      "inResultset": true
+                    },
+                    "yy": {
+                      "color": "#50a8ff",
+                      "title": "yy",
+                      "sortData": "yy",
+                      "inResultset": true
+                    },
+                    "yy2": {
+                      "color": "#ff9245",
+                      "title": "yy2",
+                      "sortData": "yy2",
+                      "inResultset": true
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "values",
+            "items": [
+              {
+                "jaql": {
+                  "type": "measure",
+                  "formula": "CASE\nWHEN(sum([137A0-FCF],((( all([2F3F2-C65]) *dupcount([137A0-FCF]) -([09B71-D4F]/60)  )) /60) * all([7A814-DEC]))  < 0) THEN 0\nELSE sum([137A0-FCF],((( all([2F3F2-C65]) *dupcount([137A0-FCF]) -([09B71-D4F]/60)  )) /60) * all([7A814-DEC])) \nEND",
+                  "context": {
+                    "[2F3F2-C65]": {
+                      "table": "Jobs",
+                      "column": "ProcessId",
+                      "dim": "[Jobs.ProcessId]",
+                      "datatype": "numeric",
+                      "title": "@Process Baselines.Manual Time(mins)"
+                    },
+                    "[7A814-DEC]": {
+                      "table": "Jobs",
+                      "column": "ProcessId",
+                      "dim": "[Jobs.ProcessId]",
+                      "datatype": "numeric",
+                      "title": "@Process Baselines.Hourly Cost"
+                    },
+                    "[09B71-D4F]": {
+                      "table": "Jobs",
+                      "column": "RuntimeInSeconds",
+                      "dim": "[Jobs.RuntimeInSeconds]",
+                      "datatype": "numeric",
+                      "agg": "sum",
+                      "title": "Total RuntimeInSeconds"
+                    },
+                    "[0BA39-27B]": {
+                      "table": "Jobs",
+                      "column": "RuntimeInSeconds",
+                      "dim": "[Jobs.RuntimeInSeconds]",
+                      "datatype": "numeric",
+                      "title": "RuntimeInSeconds"
+                    },
+                    "[137A0-FCF]": {
+                      "table": "Jobs",
+                      "column": "ProcessId",
+                      "dim": "[Jobs.ProcessId]",
+                      "datatype": "numeric",
+                      "title": "ProcessId"
+                    }
+                  },
+                  "title": "##Dashboard_BusinessROI_money_saved##"
+                },
+                "format": {
+                  "mask": {
+                    "type": "number",
+                    "abbreviations": {
+                      "t": true,
+                      "b": true,
+                      "m": true,
+                      "k": true
+                    },
+                    "separated": true,
+                    "decimals": "auto",
+                    "isdefault": true
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "filters",
+            "items": []
+          }
+        ]
+      },
+      "iconSmall": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAYCAYAAAC8/X7cAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkFDOTk4NjMxNzU1MTExRTM4QkE0QjUwRjg4NjAzOUM1IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkFDOTk4NjMyNzU1MTExRTM4QkE0QjUwRjg4NjAzOUM1Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QUM5OTg2MkY3NTUxMTFFMzhCQTRCNTBGODg2MDM5QzUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QUM5OTg2MzA3NTUxMTFFMzhCQTRCNTBGODg2MDM5QzUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4Ed6mDAAACVUlEQVR42uyYzytmURjHXWPCbsTkHxAyG1Ga1SSr2chWJFnIu2AW76zFQkqzkCl2RLGXpYVSFhZIfkzZyMbPMRYkkVyfh0P3feec+97z3iMppz6d4znnfu/z3POcHy/P9/2ct1xyc956kRmAev+xVL/EO77UNtSDD9Wufc+LKfCRqgxEZ9fzvEvHgafob68uXDpJIXEc+mkewx/YgH/YJqDYhePwnz62CSiOFQAOfqCagz4oCnTlQwcsM6YkhvMZ9RlTEmcGfsD3kH6Z8pEYE2Cln2f4yoVKSKZrhNzeD3QnIjjRjEYPz50ZvnKKPrltrY9GD/WZaREPQFK1v8FXFVgBVXnE7bkKlmz0ccpa35RClYF2RaB9Z5EKYWOd6ZsCkByTLUuO6cEnIylxQ7UZQVzGbYX0a/VJJWt9bQA4Ok/1WXYB2r/Sun9HeMEUz52bOnH0WZ92Vvo8d25cxCqIK6orTde4yts2w6Nr8DOTBzjgRD83w57fCutwCDNQSmAy7e3QLadjYPhfGJKXM+Yi4p7fCutwCDNQSmAZ9RlzEbqNKuebqKYDphZZcNjrcFAW0KigDi3ROVH2qAeWVh97HQ4+66tD60Ff2VNK2F2oU2OrhRpYCaTaaZYHViR9nD7N9jpdYLDnO7qrOdEPC2BWYzsIfp2YxYl+WABjMAy36u8daCRlrh0FoNUnZaz0w7ZRWTBJFmkv9ae0+1DsohZkkkX6oJ92H8o6gAQOH5l+/ViUPQKe1NgTOHxk2JWs9Al4UhdAl6MPvAi6AJzre+//lXjlci/AAOnMDanQIR59AAAAAElFTkSuQmCC",
+      "iconSmallWizard": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAYCAYAAAC8/X7cAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkFDOTk4NjMxNzU1MTExRTM4QkE0QjUwRjg4NjAzOUM1IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkFDOTk4NjMyNzU1MTExRTM4QkE0QjUwRjg4NjAzOUM1Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QUM5OTg2MkY3NTUxMTFFMzhCQTRCNTBGODg2MDM5QzUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QUM5OTg2MzA3NTUxMTFFMzhCQTRCNTBGODg2MDM5QzUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4Ed6mDAAACVUlEQVR42uyYzytmURjHXWPCbsTkHxAyG1Ga1SSr2chWJFnIu2AW76zFQkqzkCl2RLGXpYVSFhZIfkzZyMbPMRYkkVyfh0P3feec+97z3iMppz6d4znnfu/z3POcHy/P9/2ct1xyc956kRmAev+xVL/EO77UNtSDD9Wufc+LKfCRqgxEZ9fzvEvHgafob68uXDpJIXEc+mkewx/YgH/YJqDYhePwnz62CSiOFQAOfqCagz4oCnTlQwcsM6YkhvMZ9RlTEmcGfsD3kH6Z8pEYE2Cln2f4yoVKSKZrhNzeD3QnIjjRjEYPz50ZvnKKPrltrY9GD/WZaREPQFK1v8FXFVgBVXnE7bkKlmz0ccpa35RClYF2RaB9Z5EKYWOd6ZsCkByTLUuO6cEnIylxQ7UZQVzGbYX0a/VJJWt9bQA4Ok/1WXYB2r/Sun9HeMEUz52bOnH0WZ92Vvo8d25cxCqIK6orTde4yts2w6Nr8DOTBzjgRD83w57fCutwCDNQSmAy7e3QLadjYPhfGJKXM+Yi4p7fCutwCDNQSmAZ9RlzEbqNKuebqKYDphZZcNjrcFAW0KigDi3ROVH2qAeWVh97HQ4+66tD60Ff2VNK2F2oU2OrhRpYCaTaaZYHViR9nD7N9jpdYLDnO7qrOdEPC2BWYzsIfp2YxYl+WABjMAy36u8daCRlrh0FoNUnZaz0w7ZRWTBJFmkv9ae0+1DsohZkkkX6oJ92H8o6gAQOH5l+/ViUPQKe1NgTOHxk2JWs9Al4UhdAl6MPvAi6AJzre+//lXjlci/AAOnMDanQIR59AAAAAElFTkSuQmCC",
+      "style": {
+        "legend": {
+          "enabled": false,
+          "position": "bottom"
+        },
+        "labels": {
+          "enabled": true,
+          "categories": false,
+          "value": true,
+          "percent": false,
+          "decimals": false
+        },
+        "dataLimits": {
+          "seriesCapacity": 100000
+        },
+        "lineWidth": {
+          "width": "bold"
+        },
+        "seriesLabels": {
+          "enabled": true,
+          "rotation": 0
+        },
+        "markers": {
+          "enabled": false,
+          "fill": "hollow",
+          "size": "small"
+        },
+        "xAxis": {
+          "enabled": true,
+          "ticks": true,
+          "labels": {
+            "enabled": true,
+            "rotation": 0
+          },
+          "title": {
+            "enabled": false
+          },
+          "x2Title": {
+            "enabled": false
+          },
+          "gridLines": true,
+          "isIntervalEnabled": false
+        },
+        "yAxis": {
+          "inactive": false,
+          "enabled": true,
+          "ticks": true,
+          "labels": {
+            "enabled": true,
+            "rotation": 0
+          },
+          "title": {
+            "enabled": false
+          },
+          "gridLines": true,
+          "logarithmic": false,
+          "isIntervalEnabled": true
+        },
+        "y2Axis": {
+          "inactive": true,
+          "enabled": true,
+          "ticks": true,
+          "labels": {
+            "enabled": true,
+            "rotation": 0
+          },
+          "title": {
+            "enabled": false
+          },
+          "gridLines": false,
+          "logarithmic": false,
+          "isIntervalEnabled": true
+        },
+        "navigator": {
+          "enabled": true
+        },
+        "narration": {
+          "enabled": false,
+          "display": "above",
+          "format": "bullets",
+          "verbosity": "low",
+          "up_sentiment": "good",
+          "aggregation": "sum",
+          "labels": [
+            {
+              "id": "##dashboard_businessroi_processes##",
+              "title": "##Dashboard_BusinessROI_processes##",
+              "singular": "##Dashboard_BusinessROI_processes##",
+              "plural": "##Dashboard_BusinessROI_processes##"
+            }
+          ]
+        },
+        "convolution": {
+          "enabled": true,
+          "selectedConvolutionType": "byPercentage",
+          "minimalIndependentSlicePercentage": 3,
+          "independentSlicesCount": 7
+        }
+      },
+      "instanceId": "A84A4-4C0A-60",
+      "queryStartTime": "2020-04-08T00:17:12",
+      "currentPage": 0,
+      "drawing": true,
+      "widgetTimingLoged": false,
+      "continuousDates": false,
+      "nullAsZero": false,
+      "minDate": 1553756400000,
+      "maxDate": 1569481200000,
+      "tickLevel": "week",
+      "forcedRedraw": false,
+      "inFullScreenMode": false,
+      "realTimeRefreshing": false,
+      "options": {
+        "dashboardFiltersMode": "filter",
+        "selector": true,
+        "triggersDomready": true,
+        "autoUpdateOnEveryChange": true,
+        "drillToAnywhere": true,
+        "selectorLocked": false
+      },
+      "dashboardid": "5fad87bc92b0c81eb8df0a2f",
+      "canEditFilters": false,
+      "script_old": null,
+      "script": null,
+      "instanceid": "333EC-3B90-ED",
+      "disableSelctor": false,
+      "chart": {
+        "0": {},
+        "context": {},
+        "length": 1
+      },
+      "viewState": {
+        "activeTab": "filters"
+      }
+    }
+  ],
+  "hierarchies": []
+}
