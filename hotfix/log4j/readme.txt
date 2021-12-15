@@ -45,4 +45,4 @@ Extract the zip file into C:\Scripts\ so that it creates a new folder called C:\
 
 Open powershell as Admin and run C:\Scripts\fix_log4j\fixLog4jSisense.ps1 
 
-Review the logs under C:\Scripts\fix_log4j\log.txt and make sure there are no errors, in case there are ERRORs please consult with Sisense support 
+Review the logs under C:\Scripts\fix_log4j\log.txt and make sure there are no errors, in case there are ERRORs please consult with UiPath support 
