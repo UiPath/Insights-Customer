@@ -34,6 +34,7 @@ Steps :
  
 
 *Instructions Provided by Sisense* 
+**NOTE: Sisense.Shipper service may be disabled and the script below will log an error starting the service. This is the last step and does not impact patching. This service is not used for Insights and can be left Disabled.**
 
 6.  Go to https://github.com/UiPath/Insights-Customer/blob/master/hotfix/log4j/fix_log4j_Sisense.zip
 
