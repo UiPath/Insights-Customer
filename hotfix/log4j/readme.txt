@@ -17,32 +17,30 @@ Mitigation Steps for Insights:
 
 Steps : 
 
-Open a browser and navigate to https://github.com/UiPath/Insights-Customer/tree/master/hotfix/log4j 
+1.  Open a browser and navigate to https://github.com/UiPath/Insights-Customer/tree/master/hotfix/log4j 
 
-Select the hotfix that corresponds to your version of Insights to open that repository.  
+2.  Select the hotfix that corresponds to your version of Insights to open that repository.  
 
-Click on the Download button to download the zip file. 
+3.  Click on the Download button to download the zip file. 
 
-From the download location, extract the zip files to C:\Scripts (You may need to create this directory) 
+4.  From the download location, extract the zip files to C:\Scripts (You may need to create this directory) 
 
-Open powershell as Admin and run the Insights_xx.xx.x_hotfix.ps1 in C:\Scripts 
+5.  Open powershell as Admin and run the Insights_xx.xx.x_hotfix.ps1 in C:\Scripts 
 
-cd C:\Scripts 
+    cd C:\Scripts 
 
-.\Insights_xx.xx.x_hotfix.ps1 
+    .\Insights_xx.xx.x_hotfix.ps1 
 
  
 
 *Instructions Provided by Sisense* 
 
-Go back to https://github.com/UiPath/Insights-Customer/tree/master/hotfix/log4j
+6.  Go to https://github.com/UiPath/Insights-Customer/blob/master/hotfix/log4j/fix_log4j_Sisense.zip
 
-Select the fix_log4j_Sisense.zip to open that repository 
+7.  Click on the Download button to download the zip file. 
 
-Click on the Download button to download the zip file. 
+8.  Extract the zip file into C:\Scripts\ so that it creates a new folder called C:\Scripts\fix_log4j 
 
-Extract the zip file into C:\Scripts\ so that it creates a new folder called C:\Scripts\fix_log4j 
+9. Open powershell as Admin and run C:\Scripts\fix_log4j\fixLog4jSisense.ps1 
 
-Open powershell as Admin and run C:\Scripts\fix_log4j\fixLog4jSisense.ps1 
-
-Review the logs under C:\Scripts\fix_log4j\log.txt and make sure there are no errors, in case there are ERRORs please consult with UiPath support 
+10. Review the logs under C:\Scripts\fix_log4j\log.txt and make sure there are no errors, in case there are ERRORs please consult with UiPath support 
