@@ -17,7 +17,7 @@ Mitigation Steps for Insights:
 
 Steps : 
 
-Open a browser and navigate to https://github.com/UiPath/Insights-Customer/tree/master/hotfix 
+Open a browser and navigate to https://github.com/UiPath/Insights-Customer/tree/master/hotfix/log4j 
 
 Select the hotfix that corresponds to your version of Insights to open that repository.  
 
@@ -35,7 +35,7 @@ cd C:\Scripts
 
 *Instructions Provided by Sisense* 
 
-Go back to https://github.com/UiPath/Insights-Customer/tree/master/hotfix 
+Go back to https://github.com/UiPath/Insights-Customer/tree/master/hotfix/log4j
 
 Select the fix_log4j_Sisense.zip to open that repository 
 
