@@ -1,6 +1,6 @@
 <#
   .SYNOPSIS
-  Performs Looker Initialzation on the designated remote Linux VM
+  Performs Looker Initialization on the designated remote Linux VM
 
   .DESCRIPTION
   The Deploy-Looker.ps1 script updates the registry with new data generated during
@@ -10,7 +10,7 @@
   Specifies the hostname of the remote Linux VM.
 
   .PARAMETER Port
-  (Optinal) Specifies the port of the remote Linux VM, if this parameter is not set,
+  (Optional) Specifies the port of the remote Linux VM, if this parameter is not set,
   the script will use 22 as default port.
 
   .PARAMETER Username
@@ -18,7 +18,7 @@
 
   .PARAMETER Password
   (Optional) Specifies the password to login to the remote Linux VM.
-  Note: if use SSH public key to authencitate, this parameter is ussed to enter
+  Note: if use SSH public key to authenticate, this parameter is used to enter
   passphrase.
 
   .PARAMETER KeyfilePath
@@ -36,15 +36,15 @@
   .PARAMETER LookerImageVersionTag
   (Optional) Specifies the looker image tag for dev/testing purpose.
 
-  .PARAMETER PassPasspharse
-  (Optional) Specifies the passhparse for password store on Linux VM if you want to
+  .PARAMETER PassPassphrase
+  (Optional) Specifies the passphrase for password store on Linux VM if you want to
   upgrade from previously installed Looker and stored password in Linux VM.
 
   .PARAMETER OfflineBundleFilePath
   (Optional) Specifies the path to the offline bundle File for offline initialization.
 
   .PARAMETER AutoUpdateFingerprint
-  (Optional) Specifies whether automatically update fingerpirnt when setup SSH connection.
+  (Optional) Specifies whether automatically update fingerprint when setup SSH connection.
 
   .INPUTS
   None. You cannot pipe objects to Deploy-Looker.ps1.
@@ -71,7 +71,7 @@ param(
     [string]$LookerZipFilePath = "",
     [string]$LookerImageFilePath = "",
     [string]$LookerImageVersionTag = "",
-    [string]$PassPasspharse = "",
+    [string]$PassPassphrase = "",
     [string]$OfflineBundleFilePath = "",
     [bool]$AutoUpdateFingerprint = $True
 )
@@ -138,8 +138,8 @@ Function Invoke-RemoteCommand($command) {
 
 Function Get-RemotePassword($passName) {
     $command = "pass ls '$passName'; "
-    if ($PassPasspharse.Length -ge 0) {
-        $pwCommand = "export PASSWORD_STORE_GPG_OPTS=`"--pinentry-mode=loopback --passphrase $PassPasspharse`"; "
+    if ($PassPassphrase.Length -ge 0) {
+        $pwCommand = "export PASSWORD_STORE_GPG_OPTS=`"--pinentry-mode=loopback --passphrase $PassPassphrase`"; "
         $command = $pwCommand + $command + "unset PASSWORD_STORE_GPG_OPTS"
 
     }
@@ -147,7 +147,7 @@ Function Get-RemotePassword($passName) {
     if ($Result.ExitStatus -eq 0) {
         $pass = $Result.Output.Trim()
         if ($Pass.Length -gt 0) {
-            Write-Host "Succesfully get password $passName"
+            Write-Host "Successfully get password $passName"
             return $pass
         }
     }
@@ -203,7 +203,7 @@ Write-HR
 
 $MaskedPassword = Get-MaskedPass($Password)
 $MaskedSudoPass = Get-MaskedPass($SudoPass)
-$MaskedPassPasspharse = Get-MaskedPass($PassPasspharse)
+$MaskedPassPassphrase = Get-MaskedPass($PassPassphrase)
 
 
 Write-Host "Parameters:
@@ -216,7 +216,7 @@ KeyfilePath = $KeyfilePath
 LookerZipFilePath = $LookerZipFilePath
 LookerImageFilePath = $LookerImageFilePath
 LookerImageVersionTag = $LookerImageVersionTag
-PassPasspharse = $MaskedPassPasspharse
+PassPassphrase = $MaskedPassPassphrase
 OfflineBundleFilePath = $OfflineBundleFilePath `n"
 
 # Check if our module loaded properly
@@ -230,7 +230,7 @@ Import-Module Posh-SSH
 
 # Automatically update the fingerprint for the given host.
 if ($AutoUpdateFingerprint) {
-    Remove-SSHTrustedHost $Computername | Out-Null
+    Remove-SSHTrustedHost $ComputerName | Out-Null
 }
 
 if (-Not (Test-Path $LookerZipFilePath -PathType Leaf)) {
@@ -260,7 +260,7 @@ if ($keyfilePath.Length -eq 0) {
     $Session = New-SSHSession -ComputerName $ComputerName -AcceptKey -Credential $Credentials  -Port $Port
 }
 else {
-    $Session = New-SSHSession -Computername $Computername -AcceptKey -Credential $Credentials -KeyFile $keyfilePath -Port $Port
+    $Session = New-SSHSession -ComputerName $ComputerName -AcceptKey -Credential $Credentials -KeyFile $keyfilePath -Port $Port
 }
 if (-Not $?) {
     Write-Host -ForegroundColor Red "Failed to connect to host $ComputerName. Exiting..."
@@ -361,12 +361,12 @@ else {
     Get-SCPItem -ComputerName $ComputerName -AcceptKey -Credential $Credentials -KeyFile $keyfilePath -Port $Port -Path $RemoteLookerJsonFilePath -PathType File -Destination $DeployPath
 }
 if (-Not $?) {
-    Write-Host -ForegroundColor Red "Failed to download looker.json. You can manually downlad it using the following command`n scp $Username@${ComputerName}:'${RemoteLookerJsonFilePath}' '$DeployPath'"
+    Write-Host -ForegroundColor Red "Failed to download looker.json. You can manually download it using the following command`n scp $Username@${ComputerName}:'${RemoteLookerJsonFilePath}' '$DeployPath'"
     exit 1
 }
 Write-Output "Saved the file to $DeployPath\looker.json"
 
-Write-Host -ForegroundColor Green "`nUiPath Insights Looker Server deployed succesfully!"
+Write-Host -ForegroundColor Green "`nUiPath Insights Looker Server deployed successfully!"
 
 Write-Host -ForegroundColor Green "`nPreview of the looker.json file"
 Write-HR
