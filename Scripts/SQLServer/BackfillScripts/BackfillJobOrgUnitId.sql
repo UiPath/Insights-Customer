@@ -1,3 +1,4 @@
+-- 1.backfill JobOrganizationUnitId
 with CTE as (
 select qie.[JobOrgUnitFullyQualifiedName] as qOrgName, qie.[JobOrganizationUnitId] as qOrgId, j.[OrganizationUnitId] as jOrgId, j.[OrgUnitFullyQualifiedName] as jOrgName
 from [dbo].[QueueItemEvents] qie 
@@ -6,3 +7,6 @@ inner join [dbo].[Jobs] j on qi.[ExecutorJobId] = j.[Id]
 where j.[OrganizationUnitId] != qie.[JobOrganizationUnitId] or (qie.[JobOrganizationUnitId] is null and j.[OrganizationUnitId] is not null))
 update CTE
 set qOrgName = jOrgName, qOrgId = jOrgId;
+
+--2.truncate read table
+truncate table [dbo].QueueItems;
