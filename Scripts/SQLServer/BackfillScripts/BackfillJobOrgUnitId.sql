@@ -9,4 +9,6 @@ update CTE
 set qOrgName = jOrgName, qOrgId = jOrgId;
 
 --2.truncate read table
-truncate table [dbo].QueueItems;
+truncate table [read].[QueueItemEvents];
+truncate table [read].[QueueItems];
+delete [dbo].[IngestionMarkers] where [IngestionEventType] = 9006
