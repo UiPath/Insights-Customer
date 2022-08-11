@@ -11,4 +11,7 @@ set qOrgName = jOrgName, qOrgId = jOrgId;
 --2.truncate read table
 truncate table [read].[QueueItemEvents];
 truncate table [read].[QueueItems];
-delete [dbo].[IngestionMarkers] where [IngestionEventType] = 9006
+truncate table [read].[Jobs];
+truncate table [read].[JobEvents];
+delete [dbo].[IngestionMarkers] where [IngestionEventType] = 9006;
+delete [dbo].[IngestionMarkers] where [IngestionEventType] = 9001;
