@@ -13,5 +13,5 @@ truncate table [read].[QueueItemEvents];
 truncate table [read].[QueueItems];
 truncate table [read].[Jobs];
 truncate table [read].[JobEvents];
-delete [dbo].[IngestionMarkers] where [IngestionEventType] = 9006;
+delete [dbo].[IngestionMarkers] where [IngestionEventType] = 9002;
 delete [dbo].[IngestionMarkers] where [IngestionEventType] = 9001;
