@@ -23,4 +23,5 @@ Add-MpPreference -ExclusionProcess "C:\Program Files\Sisense\infra\MongoDB\Repos
 Add-MpPreference -ExclusionProcess "C:\Program Files\Sisense\Infra\Data\Shipper\Sisense.Shipper.exe"
 
 # For Sisense.[] {Gateway Galaxy ECMServer Configuration Identity Intelligence Jobs Orchestrator Pivot2 Plugins QueryProxy SPE StorageManager Usage}
+#
 Add-MpPreference -ExclusionProcess "C:\Program Files\Sisense\app\*\Sisense.Service.exe" 
