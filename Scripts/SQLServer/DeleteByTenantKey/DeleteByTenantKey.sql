@@ -10,3 +10,10 @@ delete from [dbo].[QueueItems] where TenantKey = @tenantKey;
 delete from [dbo].[RobotLogs] where TenantId = @tenantId;
 delete from [read].[QueueDynamicJsonMetadata] where TenantKey = @tenantKey;
 delete from [read].[RobotDynamicJsonMetadata] where TenantKey = @tenantKey;
+
+--if you have mulitple deleted tenant, you just need to truncate read tables once
+truncate table [read].[RobotLogs];
+truncate table [read].[Jobs];
+truncate table [read].[JobEvents];
+truncate table [read].[QueueItems];
+truncate table [read].[QueueItemEvents];
