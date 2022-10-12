@@ -43,6 +43,9 @@
   .PARAMETER OfflineBundleFilePath
   (Optional) Specifies the path to the offline bundle File for offline initialization.
 
+  .PARAMETER BypassSystemCheck
+  (Optional) Specifies whether bypass system check for linux VM.
+
   .PARAMETER AutoUpdateFingerprint
   (Optional) Specifies whether automatically update fingerprint when setup SSH connection.
 
@@ -73,6 +76,7 @@ param(
     [string]$LookerImageVersionTag = "",
     [string]$PassPassphrase = "",
     [string]$OfflineBundleFilePath = "",
+    [bool]$BypassSystemCheck = $False
     [bool]$AutoUpdateFingerprint = $True
 )
 
@@ -128,7 +132,7 @@ Function Send-File($FilePath) {
 }
 
 Function Invoke-RemoteCommand($command) {
-    $Result = Invoke-SSHCommand -SessionId $Session.sessionid -Command $Command -ShowStandardOutputStream -Timeout 600
+    $Result = Invoke-SSHCommand -SessionId $Session.sessionid -Command $Command -ShowStandardOutputStream -Timeout 3600
     if ($Result.ExitStatus -ne 0) {
         Write-Host -ForegroundColor Red "Failed to execute command '$Command' on host $ComputerName. Exiting..."
         Write-Host -ForegroundColor Red $Result.Error
@@ -341,6 +345,9 @@ if ($LookerImageFilePath.length -gt 0) {
 if ($OfflineBundleFilePath.length -gt 0) {
     $OfflineBundleFileName = Get-FileName($OfflineBundleFilePath)
     $Command = $Command + " -o $OfflineBundleFileName"
+}
+if ($BypassSystemCheck) {
+    $Command = $Command + " -b"
 }
 Invoke-RemoteCommand($Command)
 
