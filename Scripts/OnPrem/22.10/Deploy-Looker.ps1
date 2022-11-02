@@ -76,7 +76,7 @@ param(
     [string]$LookerImageVersionTag = "",
     [string]$PassPassphrase = "",
     [string]$OfflineBundleFilePath = "",
-    [bool]$BypassSystemCheck = $False
+    [bool]$BypassSystemCheck = $False,
     [bool]$AutoUpdateFingerprint = $True
 )
 
