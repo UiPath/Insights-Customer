@@ -10,6 +10,12 @@ CREATE OR ALTER PROCEDURE [dbo].[Delete_Process_Logs_DBO]
 	@BatchSize INT = 100000
 AS
 BEGIN
+	IF IS_SRVROLEMEMBER('sysadmin') != 1
+	BEGIN
+		PRINT('Failed to execute the script! Current user doesn''t own sysadmin role.')
+    	RETURN;
+	END;
+
 	SET NOCOUNT ON;
 	DECLARE @Start_RobotLogs_Cutoff_Id BIGINT = 0;
 	DECLARE @End_RobotLogs_Cutoff_Id BIGINT = 0;

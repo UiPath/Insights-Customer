@@ -18,6 +18,11 @@ CREATE OR ALTER PROCEDURE [dbo].[Delete_Insights_Data_DBO]
 	@BatchSize INT = 100000
 AS
 BEGIN
+	IF IS_SRVROLEMEMBER('sysadmin') != 1
+	BEGIN
+		PRINT('Failed to execute the script! Current user doesn''t own sysadmin role.')
+    	RETURN;
+	END;
 
 	DECLARE @total_deleted_jobEvents BIGINT = 0;
 	DECLARE @total_deleted_queueItemEvents BIGINT = 0;

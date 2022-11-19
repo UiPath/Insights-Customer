@@ -9,6 +9,11 @@ CREATE OR ALTER PROCEDURE [read].[Delete_Process_Logs_Read]
 	@TenantId INT
 AS
 BEGIN
+	IF IS_SRVROLEMEMBER('sysadmin') != 1
+	BEGIN
+		PRINT('Failed to execute the script! Current user doesn''t own sysadmin role.')
+    	RETURN;
+	END;
 
 	DECLARE @topId INT = 0;
 
@@ -28,13 +33,11 @@ BEGIN
         RETURN;
     END;
 
-	-- clear read table
-	TRUNCATE TABLE [read].[RobotLogs];
-
-	-- rebuild impacted process table 
-	UPDATE [read].[JsonSettings]
-	SET DdlOperationPerformed = 0, LastUpdatedTime = GETUTCDATE()
-	WHERE QueueJsonType IS NULL AND ObjectName = @ProcessName AND Enabled = 1 AND TenantKey = @TenantKey;
+	-- rename RobotLog read table
+	IF EXISTS(SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'read' AND TABLE_NAME = 'RobotLogs')
+	BEGIN
+	exec sp_rename 'read.RobotLogs', 'RobotLogs_Temp';
+	END;
 
 	-- kill all of running Migrate RobotLogs SPs
 	DECLARE @command NVARCHAR(MAX);
@@ -42,7 +45,7 @@ BEGIN
 	WHILE EXISTS (SELECT session_id 
 			  FROM sys.dm_exec_requests handle OUTER APPLY sys.fn_get_sql(handle.sql_handle) spname  
 			  WHERE spname.text LIKE '%MigrateRobotLogs%' AND spname.text NOT LIKE '%sys.dm_exec_requests%')
-    BEGIN
+	BEGIN
 		SELECT @command = STRING_AGG(CONCAT ('KILL ', session_id), ' ')  
 		FROM sys.dm_exec_requests handle OUTER APPLY sys.fn_get_sql(handle.sql_handle) spname  
 		WHERE spname.text LIKE '%MigrateRobotLogs%' AND spname.text NOT LIKE '%sys.dm_exec_requests%';
@@ -50,13 +53,19 @@ BEGIN
     	EXEC (@command);
 	-- Aborted SP will be retried, wait 3 seconds and kill the process again. 
 		WAITFOR DELAY '00:00:03';
-    END;
-
-	-- Verify again, if there is data in the table again, truncate the table again. 
-	IF EXISTS (SELECT TOP 1 * FROM [read].[RobotLogs]) 
-	BEGIN
-    	TRUNCATE TABLE [read].[RobotLogs];
 	END;
+
+	-- truncate read RobotLogs table and change it to the original name
+	IF EXISTS(SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'read' AND TABLE_NAME = 'RobotLogs_Temp')
+	BEGIN
+	TRUNCATE TABLE [read].[RobotLogs_Temp];
+	exec sp_rename 'read.RobotLogs_Temp', 'RobotLogs';
+	END;
+
+	-- rebuild impacted process table 
+	UPDATE [read].[JsonSettings]
+	SET DdlOperationPerformed = 0, LastUpdatedTime = GETUTCDATE()
+	WHERE QueueJsonType IS NULL AND ObjectName = @ProcessName AND Enabled = 1 AND TenantKey = @TenantKey;
 
     PRINT('The script executed successfully!');
 
