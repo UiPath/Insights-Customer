@@ -47,12 +47,12 @@ Write-Output ""
 Write-Output "Enabling IIS-WebServerRole..."
 Enable-WindowsOptionalFeature -Online -FeatureName IIS-WebServerRole -all -NoRestart
 
-$HostingBundleInstallerFilePath = "$env:tmp/dotnet-hosting-6.0.7-win.exe"
+$HostingBundleInstallerFilePath = "$env:tmp/dotnet-hosting-6.0.15-win.exe"
 if (-Not(Test-Path $HostingBundleInstallerFilePath -PathType Leaf)) {
     Write-Output ""
     Write-Output "Downloading Dotnet Hosting Bundle..."
     $WebClient = New-Object System.Net.WebClient
-    $WebClient.DownloadFile("https://download.visualstudio.microsoft.com/download/pr/7de08ae2-75e6-49b8-b04a-31526204fa7b/c1cee44a509495e4bb0bba49f52c719a/dotnet-hosting-6.0.7-win.exe", $HostingBundleInstallerFilePath)
+    $WebClient.DownloadFile("https://download.visualstudio.microsoft.com/download/pr/e38901ef-e9ac-4331-a6aa-f2aec3b1754b/6d695fa51a4960393edaf725ce970a86/dotnet-hosting-6.0.15-win.exe", $HostingBundleInstallerFilePath )
 }
 
 Write-Output "Installing Dotnet Hosting Bundle..."

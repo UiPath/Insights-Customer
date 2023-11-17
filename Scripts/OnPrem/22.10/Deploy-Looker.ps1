@@ -71,6 +71,7 @@ param(
     [string]$Password = "",
     [string]$KeyfilePath = "",
     [string]$SudoPass = "",
+    [string]$DeployDir = "~",
     [string]$LookerZipFilePath = "",
     [string]$LookerImageFilePath = "",
     [string]$LookerImageVersionTag = "",
@@ -112,18 +113,18 @@ Function Get-MaskedPass($Pass) {
     return $Pass
 }
 
-Function Send-File($FilePath) {
+Function Send-File($FilePath, $DeployDir) {
     if (-Not(Test-Path $FilePath -PathType Leaf)) {
         Write-Host -ForegroundColor Red "File $FilePath does not exists."
         exit 1
     }
     $FileName = Get-FileName($FilePath)
-    Write-Output "Uploading $FileName to host $ComputerName..."
+    Write-Output "Uploading $FileName to host $ComputerName`:$DeployDir..."
     if ($keyfilePath.Length -eq 0) {
-        Set-SCPItem -ComputerName $ComputerName -AcceptKey -Credential $Credentials -Port $Port -Path $FilePath -Destination ~
+        Set-SCPItem -ComputerName $ComputerName -AcceptKey -Credential $Credentials -Port $Port -Path $FilePath -Destination $DeployDir
     }
     else {
-        Set-SCPItem -ComputerName $ComputerName -AcceptKey -Credential $Credentials -KeyFile $keyfilePath -Port $Port -Path $FilePath -Destination ~
+        Set-SCPItem -ComputerName $ComputerName -AcceptKey -Credential $Credentials -KeyFile $keyfilePath -Port $Port -Path $FilePath -Destination $DeployDir
     }
     if (-Not $?) {
         Write-Host -ForegroundColor Red "Failed to upload $FileName to host $ComputerName. Exiting..."
@@ -216,6 +217,7 @@ Port = $Port
 Username = $Username
 Password = $MaskedPassword
 SudoPass = $MaskedSudoPass
+DeployDir = $DeployDir
 KeyfilePath = $KeyfilePath
 LookerZipFilePath = $LookerZipFilePath
 LookerImageFilePath = $LookerImageFilePath
@@ -242,7 +244,7 @@ if (-Not (Test-Path $LookerZipFilePath -PathType Leaf)) {
     exit 1
 }
 
-# Create Deploy Dir
+# Create Windows Host Deploy Dir
 $DeployPath = "$Env:ProgramData\UiPath Insights"
 New-Item -ItemType Directory -Force -Path $DeployPath | Out-Null
 Write-Host "Deploy output path: $DeployPath"
@@ -312,20 +314,32 @@ else {
     $LookerSecret | Protect-CmsMessage -To $cert.Thumbprint -OutFile $DeployPath\LookerSecret
 }
 
-Write-Host -ForegroundColor Green "`nUploading Looker Initialization files to $ComputerName..."
+if ($DeployDir -ne "~") {
+    Write-Host -ForegroundColor Green "`nPreparing deploy directory..."
+    Write-Output "Deploy directory: $DeployDir..."
+    Write-Output "Note:"
+    Write-Output " - The ownership of $DeployDir will be transferred to $Username. This is required to allow file uploads and script executions."
+    Write-Output " - If this is not your first deployment, ensure that the same deploy directory as in previous deployments is being used."
+    $Command = "echo `"$SUDO_PASSWORD`" | sudo -S mkdir -p $DeployDir;"
+    $Command = $Command + "echo `"$SUDO_PASSWORD`" | sudo -S chown -R $Username $DeployDir"
+    Invoke-RemoteCommand($Command)
+}
 
-Send-File($LookerZipFilePath)
+Write-Host -ForegroundColor Green "`nUploading Looker Initialization files to $ComputerName..."
+Send-File -FilePath $LookerZipFilePath -DeployDir $DeployDir
 
 if ($LookerImageFilePath.length -gt 0) {
-    Send-File($LookerImageFilePath)
+    Send-File -FilePath $LookerImageFilePath -DeployDir $DeployDir
 }
 
 if ($OfflineBundleFilePath.length -gt 0) {
-    Send-File($OfflineBundleFilePath)
+    Send-File -FilePath $OfflineBundleFilePath -DeployDir $DeployDir
 }
 
 $LookerfileZipFileName = Get-FileName($LookerZipFilePath)
-$Command = "unzip -o $LookerfileZipFileName"
+$Command = "command -v unzip &> /dev/null || { echo 'unzip not found. Installing...'; echo `"$SUDO_PASSWORD`" | sudo -S sudo yum install -y unzip; };"
+$Command = $Command + "cd $DeployDir;"
+$Command = $Command + "echo `"$SUDO_PASSWORD`" | sudo -S unzip -o $LookerfileZipFileName"
 Write-Host -ForegroundColor Green "`nExtracting files from Insights_Lookerfiles Zip file..."
 Invoke-RemoteCommand($Command)
 
@@ -334,17 +348,17 @@ $Command = ""
 if ($LookerImageVersionTag.Length -gt 0) {
     $Command = $Command + "export CONTAINER_REGISTRY='insightsdevacr.azurecr.io'; export LOOKER_VERSION_TAG='$LookerImageVersionTag'; "
 }
-$Command = $Command + "bash insights/looker-initialization.sh -l $LookerPassword -c $CertificatePassword -y"
+$Command = $Command + "bash $DeployDir/insights/looker-initialization.sh -l $LookerPassword -c $CertificatePassword -y"
 if ($SudoPass.length -gt 0) {
     $Command = $Command + " -s $SudoPass"
 }
 if ($LookerImageFilePath.length -gt 0) {
     $LookerImageFileName = Get-FileName($LookerImageFilePath)
-    $Command = $Command + " -i $LookerImageFileName"
+    $Command = $Command + " -i $DeployDir/$LookerImageFileName"
 }
 if ($OfflineBundleFilePath.length -gt 0) {
     $OfflineBundleFileName = Get-FileName($OfflineBundleFilePath)
-    $Command = $Command + " -o $OfflineBundleFileName"
+    $Command = $Command + " -o $DeployDir/$OfflineBundleFileName"
 }
 if ($BypassSystemCheck) {
     $Command = $Command + " -b"
@@ -360,7 +374,7 @@ if (Test-Path $DeployPath\looker.json -PathType Leaf ) {
     Rename-Item -Path $DeployPath\looker.json -NewName $DeployPath\looker_backup_$CurrentTimestamp.json
 }
 
-$RemoteLookerJsonFilePath = "~/insights/looker.json"
+$RemoteLookerJsonFilePath = "$DeployDir/insights/looker.json"
 if ($keyfilePath.Length -eq 0) {
     Get-SCPItem -ComputerName $ComputerName -AcceptKey -Credential $Credentials -Path $RemoteLookerJsonFilePath -PathType File -Destination $DeployPath
 }
