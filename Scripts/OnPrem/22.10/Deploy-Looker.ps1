@@ -325,7 +325,8 @@ if ($OfflineBundleFilePath.length -gt 0) {
 }
 
 $LookerfileZipFileName = Get-FileName($LookerZipFilePath)
-$Command = "unzip -o $LookerfileZipFileName"
+$Command = "command -v unzip &> /dev/null || { echo 'unzip not found. Installing...'; sudo yum install -y unzip; };"
+$Command = $Command + "unzip -o $LookerfileZipFileName"
 Write-Host -ForegroundColor Green "`nExtracting files from Insights_Lookerfiles Zip file..."
 Invoke-RemoteCommand($Command)
 
