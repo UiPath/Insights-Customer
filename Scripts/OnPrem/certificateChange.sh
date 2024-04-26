@@ -262,6 +262,12 @@ done
 
 # Main execution
 check_args
+
+# Check if the user is sudo or root
+if [[ $EUID -ne 0 ]]; then
+    echo "FATAL: This script must be run as root or with sudo"
+    exit 1
+fi
 echo "Starting Certificate Rotation Process"
 echo ""
 check_pfx_exists
