@@ -119,7 +119,7 @@ function convert_pfx() {
         exit 1
     fi
 
-    echo "  Executing: sudo chmod 744 $INSIGHTS_DIR/tmp.pem"
+    echo "  Executing:  chmod 744 $INSIGHTS_DIR/tmp.pem"
         if [ $? -ne 0 ]; then
         echo "FATAL: Failed to set perms on $INSIGHTS_DIR/tmp.pem"
         echo "FATAL: Checking permissons on $PWD"
@@ -131,8 +131,8 @@ function convert_pfx() {
     if [[ -e "$INSIGHTS_DIR/cert.pfx" ]]; then
         randomN=$RANDOM
         echo "    The file $INSIGHTS_DIR/cert.pfx exists moving to $INSIGHTS_DIR/cert.pfx_$randomN"
-        echo "    Executing: sudo mv $INSIGHTS_DIR/cert.pfx $INSIGHTS_DIR/cert.pfx_$randomN"
-        sudo mv $INSIGHTS_DIR/cert.pfx $INSIGHTS_DIR/cert.pfx_$randomN
+        echo "    Executing:  mv $INSIGHTS_DIR/cert.pfx $INSIGHTS_DIR/cert.pfx_$randomN"
+         mv $INSIGHTS_DIR/cert.pfx $INSIGHTS_DIR/cert.pfx_$randomN
         if [ $? -ne 0 ]; then
             echo "FATAL: Could not move file"
             echo "Cleaning up /tmp/tmp.pem"
@@ -142,8 +142,8 @@ function convert_pfx() {
     fi
 
     echo "  Creating new cert.pfx"
-    echo "    Executing: sudo docker exec -it looker-container openssl pkcs12 -export -in /app/.deploy/tmp.pem -out /app/.deploy/cert.pfx -passout pass:"
-    sudo docker exec -it looker-container openssl pkcs12 -export -in /app/.deploy/tmp.pem -out /app/.deploy/cert.pfx -passout pass:
+    echo "    Executing:  docker exec -it looker-container openssl pkcs12 -export -in /app/.deploy/tmp.pem -out /app/.deploy/cert.pfx -passout pass:"
+     docker exec -it looker-container openssl pkcs12 -export -in /app/.deploy/tmp.pem -out /app/.deploy/cert.pfx -passout pass:
 
     if [[ $? -ne 0 ]]; then
         echo "Fatal: Failed to create $INSIGHTS_DIR/cert.pfx"
@@ -152,8 +152,8 @@ function convert_pfx() {
         exit 1
     fi 
     
-    echo "    Executing: sudo chmod 744 $INSIGHTS_DIR/cert.pfx"
-    sudo chmod 744 $INSIGHTS_DIR/cert.pfx
+    echo "    Executing:  chmod 744 $INSIGHTS_DIR/cert.pfx"
+     chmod 744 $INSIGHTS_DIR/cert.pfx
     
     if [[ $? -ne 0 ]]; then 
        echo "Fatal: Failed to set perms on $INSIGHTS_DIR/cert.pfx" 
@@ -171,10 +171,10 @@ function convert_pfx() {
 # Check if a specific docker container is running
 function check_docker_container() {
 
-    echo "Checking that the docker container is running: sudo  docker ps -q -f name=looker-container"
-    if [[ -z $(sudo docker ps -q -f name=looker-container) ]]; then
+    echo "Checking that the docker container is running:   docker ps -q -f name=looker-container"
+    if [[ -z $( docker ps -q -f name=looker-container) ]]; then
         echo "FATAL: Docker container $CONTAINER_NAME is not running."
-        echo "FATAL: Try: sudo systemctl restart docker"
+        echo "FATAL: Try:  systemctl restart docker"
         exit 1
     fi
 
@@ -185,8 +185,8 @@ function check_docker_container() {
 # Fine the location of insights
 function set_insights_dir() {
     echo "Setting insights working directory"
-    echo "  Executing: sudo docker inspect looker-container | jq -r '.[0].HostConfig.Binds' | grep 'deploy' | awk -F':/app/.deploy' '{print $1}' | awk -F'\"' '{print $2}'"
-    INSIGHTS_DIR=$(sudo docker inspect looker-container | jq -r '.[0].HostConfig.Binds' | grep 'deploy' | awk -F':/app/.deploy' '{print $1}' | awk -F'"' '{print $2}')
+    echo "  Executing:  docker inspect looker-container | jq -r '.[0].HostConfig.Binds' | grep 'deploy' | awk -F':/app/.deploy' '{print $1}' | awk -F'\"' '{print $2}'"
+    INSIGHTS_DIR=$(docker inspect looker-container | jq -r '.[0].HostConfig.Binds' | grep 'deploy' | awk -F':/app/.deploy' '{print $1}' | awk -F'"' '{print $2}')
     
     if [ $? -ne 0 ]; then
         echo "FATAL: Could not set the insights working directory"
@@ -207,9 +207,9 @@ function set_insights_dir() {
 # Run the certificate update
 function run_certificate_update() {
     echo "Running certificate update"
-    echo "  Executing: sudo docker exec -it looker-container su looker -m -c '</app/looker-init-job/install-certificate.sh bash'"
+    echo "  Executing: docker exec -it looker-container su looker -m -c '</app/looker-init-job/install-certificate.sh bash'"
 
-   sudo docker exec -it looker-container su looker -m -c '</app/looker-init-job/install-certificate.sh bash'
+    docker exec -it looker-container su looker -m -c '</app/looker-init-job/install-certificate.sh bash'
 
     if [ $? -ne 0 ]; then
         echo "FATAL: Certificate update failed"
@@ -235,6 +235,7 @@ function remove_cert() {
             ;;
     esac
 }
+
 # Check for command flags
 while getopts ":c:s:h" opt; do
     case $opt in
