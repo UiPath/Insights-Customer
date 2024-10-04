@@ -1,6 +1,6 @@
 <#
   .SYNOPSIS
-  Performs Looker Initialzation on the designated remote Linux VM
+  Performs Looker Initialization on the designated remote Linux VM
 
   .DESCRIPTION
   The Deploy-Looker.ps1 script updates the registry with new data generated during
@@ -10,7 +10,7 @@
   Specifies the hostname of the remote Linux VM.
 
   .PARAMETER Port
-  (Optinal) Specifies the port of the remote Linux VM, if this parameter is not set,
+  (Optional) Specifies the port of the remote Linux VM, if this parameter is not set,
   the script will use 22 as default port.
 
   .PARAMETER Username
@@ -18,7 +18,7 @@
 
   .PARAMETER Password
   (Optional) Specifies the password to login to the remote Linux VM.
-  Note: if use SSH public key to authencitate, this parameter is ussed to enter
+  Note: if use SSH public key to authenticate, this parameter is used to enter
   passphrase.
 
   .PARAMETER KeyfilePath
@@ -36,15 +36,14 @@
   .PARAMETER LookerImageVersionTag
   (Optional) Specifies the looker image tag for dev/testing purpose.
 
-  .PARAMETER PassPasspharse
-  (Optional) Specifies the passhparse for password store on Linux VM if you want to
-  upgrade from previously installed Looker and stored password in Linux VM.
-
   .PARAMETER OfflineBundleFilePath
   (Optional) Specifies the path to the offline bundle File for offline initialization.
 
+  .PARAMETER BypassSystemCheck
+  (Optional) Specifies whether bypass system check for linux VM.
+
   .PARAMETER AutoUpdateFingerprint
-  (Optional) Specifies whether automatically update fingerpirnt when setup SSH connection.
+  (Optional) Specifies whether automatically update fingerprint when setup SSH connection.
 
   .INPUTS
   None. You cannot pipe objects to Deploy-Looker.ps1.
@@ -62,18 +61,18 @@
 
 # Parameters
 param(
-    [string]$ComputerName = "",
+    [Parameter(Mandatory=$true)][string]$ComputerName,
     [int]$Port = 22,
-    [string]$Username = "",
+    [Parameter(Mandatory=$true)][string]$Username,
     [string]$Password = "",
     [string]$KeyfilePath = "",
     [string]$SudoPass = "",
     [string]$DeployDir = "~",
-    [string]$LookerZipFilePath = "",
+    [Parameter(Mandatory=$true)][string]$LookerZipFilePath,
     [string]$LookerImageFilePath = "",
     [string]$LookerImageVersionTag = "",
-    [string]$PassPasspharse = "",
     [string]$OfflineBundleFilePath = "",
+    [bool]$BypassSystemCheck = $False,
     [bool]$AutoUpdateFingerprint = $True
 )
 
@@ -81,16 +80,6 @@ Function Test-Admin {
     $identity = [System.Security.Principal.WindowsIdentity]::GetCurrent()
     $principal = New-Object System.Security.Principal.WindowsPrincipal( $identity )
     return $principal.IsInRole( [System.Security.Principal.WindowsBuiltInRole]::Administrator )
-}
-
-Function GenerateStrongPassword ([Parameter(Mandatory = $true)][int]$PasswordLength) {
-    if ($PasswordLength -lt 10) {
-        Write-Host -ForegroundColor Red "Password length must be greater than 10. Will set the password length to 10."
-        $PasswordLength = 10
-    }
-
-    $newPassword = -join ((48..57) + (65..90) + (97..122) | Get-Random -Count $PasswordLength | ForEach-Object { [char]$_ })
-    return $newPassword
 }
 
 Function Write-HR() {
@@ -129,32 +118,12 @@ Function Send-File($FilePath, $DeployDir) {
 }
 
 Function Invoke-RemoteCommand($command) {
-    $Result = Invoke-SSHCommand -SessionId $Session.sessionid -Command $Command -ShowStandardOutputStream -Timeout 600
+    $Result = Invoke-SSHCommand -SessionId $Session.sessionid -Command $Command -ShowStandardOutputStream -Timeout 3600
     if ($Result.ExitStatus -ne 0) {
         Write-Host -ForegroundColor Red "Failed to execute command '$Command' on host $ComputerName. Exiting..."
         Write-Host -ForegroundColor Red $Result.Error
         exit 1
     }
-}
-
-Function Get-RemotePassword($passName) {
-    $command = "pass ls '$passName'; "
-    if ($PassPasspharse.Length -ge 0) {
-        $pwCommand = "export PASSWORD_STORE_GPG_OPTS=`"--pinentry-mode=loopback --passphrase $PassPasspharse`"; "
-        $command = $pwCommand + $command + "unset PASSWORD_STORE_GPG_OPTS"
-
-    }
-    $Result = Invoke-SSHCommand -SessionId $Session.sessionid -Command $command
-    if ($Result.ExitStatus -eq 0) {
-        $pass = $Result.Output.Trim()
-        if ($Pass.Length -gt 0) {
-            Write-Host "Succesfully get password $passName"
-            return $pass
-        }
-    }
-
-    # Write-Host -ForegroundColor Red "Failed to get password $passName"
-    return ""
 }
 
 if (-not(Test-Admin)) {
@@ -163,24 +132,6 @@ if (-not(Test-Admin)) {
 }
 
 $HelpInfo = "Please use the following command to get help. `n`n    Get-Help .\Deploy-Looker.ps1`n"
-
-if ($ComputerName.Length -eq 0) {
-    Write-Output "The -ComputerName parameter is required."
-    Write-Output $HelpInfo
-    Exit 2
-}
-
-if ($Username.Length -eq 0) {
-    Write-Output "The -Username parameter is required."
-    Write-Output $HelpInfo
-    Exit 2
-}
-
-if ($LookerZipFilePath.Length -eq 0) {
-    Write-Output "The -LookerZipFilePath parameter is required."
-    Write-Output $HelpInfo
-    Exit 2
-}
 
 if (($KeyfilePath.Length -eq 0) -and ($Password.Length -eq 0)) {
     Write-Output "At least one of the -KeyfilePath parameter or -Password parameter is required."
@@ -204,8 +155,6 @@ Write-HR
 
 $MaskedPassword = Get-MaskedPass($Password)
 $MaskedSudoPass = Get-MaskedPass($SudoPass)
-$MaskedPassPasspharse = Get-MaskedPass($PassPasspharse)
-
 
 Write-Host "Parameters:
 ComputerName = $ComputerName
@@ -218,7 +167,6 @@ KeyfilePath = $KeyfilePath
 LookerZipFilePath = $LookerZipFilePath
 LookerImageFilePath = $LookerImageFilePath
 LookerImageVersionTag = $LookerImageVersionTag
-PassPasspharse = $MaskedPassPasspharse
 OfflineBundleFilePath = $OfflineBundleFilePath `n"
 
 # Check if our module loaded properly
@@ -232,7 +180,7 @@ Import-Module Posh-SSH
 
 # Automatically update the fingerprint for the given host.
 if ($AutoUpdateFingerprint) {
-    Remove-SSHTrustedHost $Computername | Out-Null
+    Remove-SSHTrustedHost $ComputerName | Out-Null
 }
 
 if (-Not (Test-Path $LookerZipFilePath -PathType Leaf)) {
@@ -262,52 +210,11 @@ if ($keyfilePath.Length -eq 0) {
     $Session = New-SSHSession -ComputerName $ComputerName -AcceptKey -Credential $Credentials  -Port $Port
 }
 else {
-    $Session = New-SSHSession -Computername $Computername -AcceptKey -Credential $Credentials -KeyFile $keyfilePath -Port $Port
+    $Session = New-SSHSession -ComputerName $ComputerName -AcceptKey -Credential $Credentials -KeyFile $keyfilePath -Port $Port
 }
 if (-Not $?) {
     Write-Host -ForegroundColor Red "Failed to connect to host $ComputerName. Exiting..."
     exit 1
-}
-
-# Prepare Looker Admin Pass and Cert Pass
-$LookerSecret = ""
-$certs = Get-Childitem -Path Cert:\LocalMachine\My -DocumentEncryptionCert | Where-Object { $_.Subject -ieq "CN=UiPathLookerEncryptionCertificate" }
-$hasEncryptionCert = ($certs | Measure-Object).Count
-if ($hasEncryptionCert -eq 0) {
-    $cert = New-SelfSignedCertificate -Subject "UiPathLookerEncryptionCertificate" -CertStoreLocation "Cert:\LocalMachine\My" -KeyUsage KeyEncipherment, DataEncipherment, KeyAgreement -Type DocumentEncryptionCert
-}
-else {
-    $cert = ($certs | Select-Object -First 1)
-}
-
-Write-Host -ForegroundColor Green "`nPreparing Looker Password and Certificate Password..."
-
-if (Test-Path $DeployPath\LookerSecret -PathType Leaf) {
-    Write-Output "$DeployPath\LookerSecret file exists. The looker admin password and certificate password stored in this file will be used to initialize looker on host $ComputerName."
-    try {
-        $splits = (Unprotect-CmsMessage -Path "$DeployPath\LookerSecret") -Split "`n"
-        $LookerPassword = ($splits[0] -Split " ")[1].Substring(4)
-        $CertificatePassword = ($splits[1] -Split " ")[1]
-    }
-    catch {
-        Write-Host -ForegroundColor Red "Failed to get password from `$DeployPath\LookerSecret`. Please check if the file is damaged or the UiPathLookerEncryptionCertificate has not been installed for the current user."
-    }
-}
-else {
-    Write-Output "Looking up the looker admin password and certificate password stored on host $ComputerName pass store."
-    $LookerPassword = Get-RemotePassword("Insights/looker-password")
-    $CertificatePassword = Get-RemotePassword("Insights/cert-password")
-
-    # Generate Looker Credentials
-    if (($LookerPassword.Length -eq 0) -Or ($CertificatePassword.Length -eq 0)) {
-        Write-Output "No valid password found on host $ComputerName. Generating Looker credentials..."
-        $LookerPassword = GenerateStrongPassword (20)
-        $CertificatePassword = GenerateStrongPassword (20)
-    }
-    $LookerSecret = "UiPathInsightsLookerAdminPass: 1qW@$LookerPassword`nUiPathInsightsLookerCertificatePass: $CertificatePassword"
-    Write-Output "Writing Looker admin password and certificate password to $DeployPath\LookerSecret file..."
-    # Encrypt and save LookerSecret to deploy path
-    $LookerSecret | Protect-CmsMessage -To $cert.Thumbprint -OutFile $DeployPath\LookerSecret
 }
 
 if ($DeployDir -ne "~") {
@@ -344,7 +251,7 @@ $Command = ""
 if ($LookerImageVersionTag.Length -gt 0) {
     $Command = $Command + "export CONTAINER_REGISTRY='insightsdevacr.azurecr.io'; export LOOKER_VERSION_TAG='$LookerImageVersionTag'; "
 }
-$Command = $Command + "bash $DeployDir/insights/looker-initialization.sh -l $LookerPassword -c $CertificatePassword -y"
+$Command = $Command + "bash $DeployDir/insights/looker-initialization.sh -y"
 if ($SudoPass.length -gt 0) {
     $Command = $Command + " -s $SudoPass"
 }
@@ -355,6 +262,9 @@ if ($LookerImageFilePath.length -gt 0) {
 if ($OfflineBundleFilePath.length -gt 0) {
     $OfflineBundleFileName = Get-FileName($OfflineBundleFilePath)
     $Command = $Command + " -o $DeployDir/$OfflineBundleFileName"
+}
+if ($BypassSystemCheck) {
+    $Command = $Command + " -b"
 }
 Invoke-RemoteCommand($Command)
 
@@ -375,12 +285,12 @@ else {
     Get-SCPItem -ComputerName $ComputerName -AcceptKey -Credential $Credentials -KeyFile $keyfilePath -Port $Port -Path $RemoteLookerJsonFilePath -PathType File -Destination $DeployPath
 }
 if (-Not $?) {
-    Write-Host -ForegroundColor Red "Failed to download looker.json. You can manually downlad it using the following command`n scp $Username@${ComputerName}:'${RemoteLookerJsonFilePath}' '$DeployPath'"
+    Write-Host -ForegroundColor Red "Failed to download looker.json. You can manually download it using the following command`n scp $Username@${ComputerName}:'${RemoteLookerJsonFilePath}' '$DeployPath'"
     exit 1
 }
 Write-Output "Saved the file to $DeployPath\looker.json"
 
-Write-Host -ForegroundColor Green "`nUiPath Insights Looker Server deployed succesfully!"
+Write-Host -ForegroundColor Green "`nUiPath Insights Looker Server deployed successfully!"
 
 Write-Host -ForegroundColor Green "`nPreview of the looker.json file"
 Write-HR

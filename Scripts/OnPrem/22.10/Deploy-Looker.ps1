@@ -36,10 +36,6 @@
   .PARAMETER LookerImageVersionTag
   (Optional) Specifies the looker image tag for dev/testing purpose.
 
-  .PARAMETER PassPassphrase
-  (Optional) Specifies the passphrase for password store on Linux VM if you want to
-  upgrade from previously installed Looker and stored password in Linux VM.
-
   .PARAMETER OfflineBundleFilePath
   (Optional) Specifies the path to the offline bundle File for offline initialization.
 
@@ -65,17 +61,16 @@
 
 # Parameters
 param(
-    [string]$ComputerName = "",
+    [Parameter(Mandatory=$true)][string]$ComputerName,
     [int]$Port = 22,
-    [string]$Username = "",
+    [Parameter(Mandatory=$true)][string]$Username,
     [string]$Password = "",
     [string]$KeyfilePath = "",
     [string]$SudoPass = "",
     [string]$DeployDir = "~",
-    [string]$LookerZipFilePath = "",
+    [Parameter(Mandatory=$true)][string]$LookerZipFilePath,
     [string]$LookerImageFilePath = "",
     [string]$LookerImageVersionTag = "",
-    [string]$PassPassphrase = "",
     [string]$OfflineBundleFilePath = "",
     [bool]$BypassSystemCheck = $False,
     [bool]$AutoUpdateFingerprint = $True
@@ -85,16 +80,6 @@ Function Test-Admin {
     $identity = [System.Security.Principal.WindowsIdentity]::GetCurrent()
     $principal = New-Object System.Security.Principal.WindowsPrincipal( $identity )
     return $principal.IsInRole( [System.Security.Principal.WindowsBuiltInRole]::Administrator )
-}
-
-Function GenerateStrongPassword ([Parameter(Mandatory = $true)][int]$PasswordLength) {
-    if ($PasswordLength -lt 10) {
-        Write-Host -ForegroundColor Red "Password length must be greater than 10. Will set the password length to 10."
-        $PasswordLength = 10
-    }
-
-    $newPassword = -join ((48..57) + (65..90) + (97..122) | Get-Random -Count $PasswordLength | ForEach-Object { [char]$_ })
-    return $newPassword
 }
 
 Function Write-HR() {
@@ -141,50 +126,12 @@ Function Invoke-RemoteCommand($command) {
     }
 }
 
-Function Get-RemotePassword($passName) {
-    $command = "pass ls '$passName'; "
-    if ($PassPassphrase.Length -ge 0) {
-        $pwCommand = "export PASSWORD_STORE_GPG_OPTS=`"--pinentry-mode=loopback --passphrase $PassPassphrase`"; "
-        $command = $pwCommand + $command + "unset PASSWORD_STORE_GPG_OPTS"
-
-    }
-    $Result = Invoke-SSHCommand -SessionId $Session.sessionid -Command $command
-    if ($Result.ExitStatus -eq 0) {
-        $pass = $Result.Output.Trim()
-        if ($Pass.Length -gt 0) {
-            Write-Host "Successfully get password $passName"
-            return $pass
-        }
-    }
-
-    # Write-Host -ForegroundColor Red "Failed to get password $passName"
-    return ""
-}
-
 if (-not(Test-Admin)) {
     Write-Output "User is not running with administrative rights.`nPlease open a PowerShell console as administrator and try again."
     Exit 2
 }
 
 $HelpInfo = "Please use the following command to get help. `n`n    Get-Help .\Deploy-Looker.ps1`n"
-
-if ($ComputerName.Length -eq 0) {
-    Write-Output "The -ComputerName parameter is required."
-    Write-Output $HelpInfo
-    Exit 2
-}
-
-if ($Username.Length -eq 0) {
-    Write-Output "The -Username parameter is required."
-    Write-Output $HelpInfo
-    Exit 2
-}
-
-if ($LookerZipFilePath.Length -eq 0) {
-    Write-Output "The -LookerZipFilePath parameter is required."
-    Write-Output $HelpInfo
-    Exit 2
-}
 
 if (($KeyfilePath.Length -eq 0) -and ($Password.Length -eq 0)) {
     Write-Output "At least one of the -KeyfilePath parameter or -Password parameter is required."
@@ -208,8 +155,6 @@ Write-HR
 
 $MaskedPassword = Get-MaskedPass($Password)
 $MaskedSudoPass = Get-MaskedPass($SudoPass)
-$MaskedPassPassphrase = Get-MaskedPass($PassPassphrase)
-
 
 Write-Host "Parameters:
 ComputerName = $ComputerName
@@ -222,7 +167,6 @@ KeyfilePath = $KeyfilePath
 LookerZipFilePath = $LookerZipFilePath
 LookerImageFilePath = $LookerImageFilePath
 LookerImageVersionTag = $LookerImageVersionTag
-PassPassphrase = $MaskedPassPassphrase
 OfflineBundleFilePath = $OfflineBundleFilePath `n"
 
 # Check if our module loaded properly
@@ -273,47 +217,6 @@ if (-Not $?) {
     exit 1
 }
 
-# Prepare Looker Admin Pass and Cert Pass
-$LookerSecret = ""
-$certs = Get-Childitem -Path Cert:\LocalMachine\My -DocumentEncryptionCert | Where-Object { $_.Subject -ieq "CN=UiPathLookerEncryptionCertificate" }
-$hasEncryptionCert = ($certs | Measure-Object).Count
-if ($hasEncryptionCert -eq 0) {
-    $cert = New-SelfSignedCertificate -Subject "UiPathLookerEncryptionCertificate" -CertStoreLocation "Cert:\LocalMachine\My" -KeyUsage KeyEncipherment, DataEncipherment, KeyAgreement -Type DocumentEncryptionCert
-}
-else {
-    $cert = ($certs | Select-Object -First 1)
-}
-
-Write-Host -ForegroundColor Green "`nPreparing Looker Password and Certificate Password..."
-
-if (Test-Path $DeployPath\LookerSecret -PathType Leaf) {
-    Write-Output "$DeployPath\LookerSecret file exists. The looker admin password and certificate password stored in this file will be used to initialize looker on host $ComputerName."
-    try {
-        $splits = (Unprotect-CmsMessage -Path "$DeployPath\LookerSecret") -Split "`n"
-        $LookerPassword = ($splits[0] -Split " ")[1].Substring(4)
-        $CertificatePassword = ($splits[1] -Split " ")[1]
-    }
-    catch {
-        Write-Host -ForegroundColor Red "Failed to get password from `$DeployPath\LookerSecret`. Please check if the file is damaged or the UiPathLookerEncryptionCertificate has not been installed for the current user."
-    }
-}
-else {
-    Write-Output "Looking up the looker admin password and certificate password stored on host $ComputerName pass store."
-    $LookerPassword = Get-RemotePassword("Insights/looker-password")
-    $CertificatePassword = Get-RemotePassword("Insights/cert-password")
-
-    # Generate Looker Credentials
-    if (($LookerPassword.Length -eq 0) -Or ($CertificatePassword.Length -eq 0)) {
-        Write-Output "No valid password found on host $ComputerName. Generating Looker credentials..."
-        $LookerPassword = GenerateStrongPassword (20)
-        $CertificatePassword = GenerateStrongPassword (20)
-    }
-    $LookerSecret = "UiPathInsightsLookerAdminPass: 1qW@$LookerPassword`nUiPathInsightsLookerCertificatePass: $CertificatePassword"
-    Write-Output "Writing Looker admin password and certificate password to $DeployPath\LookerSecret file..."
-    # Encrypt and save LookerSecret to deploy path
-    $LookerSecret | Protect-CmsMessage -To $cert.Thumbprint -OutFile $DeployPath\LookerSecret
-}
-
 if ($DeployDir -ne "~") {
     Write-Host -ForegroundColor Green "`nPreparing deploy directory..."
     Write-Output "Deploy directory: $DeployDir..."
@@ -348,7 +251,7 @@ $Command = ""
 if ($LookerImageVersionTag.Length -gt 0) {
     $Command = $Command + "export CONTAINER_REGISTRY='insightsdevacr.azurecr.io'; export LOOKER_VERSION_TAG='$LookerImageVersionTag'; "
 }
-$Command = $Command + "bash $DeployDir/insights/looker-initialization.sh -l $LookerPassword -c $CertificatePassword -y"
+$Command = $Command + "bash $DeployDir/insights/looker-initialization.sh -y"
 if ($SudoPass.length -gt 0) {
     $Command = $Command + " -s $SudoPass"
 }
