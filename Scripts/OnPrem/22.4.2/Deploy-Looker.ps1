@@ -223,8 +223,8 @@ if ($DeployDir -ne "~") {
     Write-Output "Note:"
     Write-Output " - The ownership of $DeployDir will be transferred to $Username. This is required to allow file uploads and script executions."
     Write-Output " - If this is not your first deployment, ensure that the same deploy directory as in previous deployments is being used."
-    $Command = "echo `"$SUDO_PASSWORD`" | sudo -S mkdir -p $DeployDir;"
-    $Command = $Command + "echo `"$SUDO_PASSWORD`" | sudo -S chown -R $Username $DeployDir"
+    $Command = "echo `"$SudoPass`" | sudo -S mkdir -p $DeployDir;"
+    $Command = $Command + "echo `"$SudoPass`" | sudo -S chown -R $Username $DeployDir"
     Invoke-RemoteCommand($Command)
 }
 
@@ -240,9 +240,9 @@ if ($OfflineBundleFilePath.length -gt 0) {
 }
 
 $LookerfileZipFileName = Get-FileName($LookerZipFilePath)
-$Command = "command -v unzip &> /dev/null || { echo 'unzip not found. Installing...'; echo `"$SUDO_PASSWORD`" | sudo -S sudo yum install -y unzip; };"
+$Command = "command -v unzip &> /dev/null || { echo 'unzip not found. Installing...'; echo `"$SudoPass`" | sudo -S sudo yum install -y unzip; };"
 $Command = $Command + "cd $DeployDir;"
-$Command = $Command + "echo `"$SUDO_PASSWORD`" | sudo -S unzip -o $LookerfileZipFileName"
+$Command = $Command + "echo `"$SudoPass`" | sudo -S unzip -o $LookerfileZipFileName"
 Write-Host -ForegroundColor Green "`nExtracting files from Insights_Lookerfiles Zip file..."
 Invoke-RemoteCommand($Command)
 
