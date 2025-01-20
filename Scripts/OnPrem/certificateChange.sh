@@ -236,6 +236,20 @@ function remove_cert() {
     esac
 }
 
+function restart_looker() {
+    # Check the response
+    echo "Restarting looker container"
+    echo "  Executing: docker restart looker-container"
+
+    docker restart looker-container
+
+    if [ $? -ne 0 ]; then
+        echo "FATAL: Failed to restart looker container"
+        exit 1
+    fi
+    
+}
+
 # Check for command flags
 while getopts ":c:s:h" opt; do
     case $opt in
@@ -277,4 +291,5 @@ check_docker_container
 set_insights_dir
 convert_pfx
 run_certificate_update
+restart_looker
 echo "Complated Certificate Rotation Process, certificate should be updated"
