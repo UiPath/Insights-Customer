@@ -93,9 +93,15 @@ check_san_from_pfx() {
     if [[ $san =~ $FQDN ]]; then
         echo "  The certificate has a valid san attribute for $FQDN"
     else
-        echo "FATAL: The certificate does not have a valid san attribute for: $FQDN"
-        echo "FATAL: The san attributes are: $san"
-        exit 1
+        # replace everything up to the first period with a wildcard
+        FQDN2=$(echo $FQDN |  sed 's/[^.]*/\\\*/')
+        if [[ $san =~ $FQDN2 ]]; then
+            echo "  The certificate has a valid san attribute for $FQDN"
+        else
+            echo "FATAL: The certificate does not have a valid san attribute for: $FQDN"
+            echo "FATAL: The san attributes are: $san"
+            exit 1
+        fi
     fi
 
     echo ""
@@ -247,7 +253,7 @@ function restart_looker() {
         echo "FATAL: Failed to restart looker container"
         exit 1
     fi
-    
+
 }
 
 # Check for command flags
@@ -292,4 +298,4 @@ set_insights_dir
 convert_pfx
 run_certificate_update
 restart_looker
-echo "Complated Certificate Rotation Process, certificate should be updated"
+echo "Completed Certificate Rotation Process, certificate should be updated"
