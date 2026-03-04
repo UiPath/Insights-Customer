@@ -7,7 +7,7 @@ UiPath Insights user scripts, util tools, and hotfix patches for customer.
 - OnPrem Installation Scripts https://github.com/UiPath/Insights-Customer/tree/master/Scripts/OnPrem
 - SQLServer Scripts https://github.com/UiPath/Insights-Customer/tree/master/Scripts/SQLServer
 
-### Performance Indexes Script (IN-11910)
+### Performance Indexes Script
 
 The script `Scripts/SQLServer/IndexScripts/insights_indexes_test.sql` creates optimized composite indexes to improve query performance on the Insights database. It addresses heavy SQL operation bottlenecks caused by missing SORT and JOIN indexes.
 
