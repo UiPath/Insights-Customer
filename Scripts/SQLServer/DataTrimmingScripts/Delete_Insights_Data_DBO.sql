@@ -34,6 +34,7 @@ BEGIN
 	SET NOCOUNT ON;
 
 	-- Get Cutoff Id of Jobs, QueueItems, QueueItemEvents, JobEvents, RobotLogs based on input timestamp.
+	-- Ids follow ingestion order, not time, so deletes below also re-check the time column.
 	SET @JobEvents_Cutoff_Id = (SELECT ISNULL((SELECT MAX(Id) FROM [dbo].[JobEvents] WHERE TimeStamp <= @CutoffTimeStamp), 0));
 	SET @Jobs_Cutoff_Id = (SELECT ISNULL((SELECT MAX(Id) FROM [dbo].[Jobs] WHERE CreationTime <= @CutoffTimeStamp), 0));
 	SET @QueueItemEvents_Cutoff_Id = (SELECT ISNULL((SELECT MAX(Id) FROM [dbo].[QueueItemEvents] WHERE TimeStamp <= @CutoffTimeStamp), 0));
@@ -45,7 +46,7 @@ BEGIN
 	DECLARE @Deleted_Rows_QueueItems INT = @BatchSize;
 	WHILE(@Deleted_Rows_QueueItems = @BatchSize)
 	BEGIN
-		DELETE TOP(@BatchSize) FROM [dbo].[QueueItems] WHERE AnalyticsId <= @QueueItems_Cutoff_Id;
+		DELETE TOP(@BatchSize) FROM [dbo].[QueueItems] WHERE AnalyticsId <= @QueueItems_Cutoff_Id AND CreationTime <= @CutoffTimeStamp;
 		SET @Deleted_Rows_QueueItems = @@ROWCOUNT;
 		SET @total_deleted_queueItems = @Deleted_Rows_QueueItems +  @total_deleted_queueItems;
 	END;
@@ -54,7 +55,7 @@ BEGIN
 	DECLARE @Deleted_Rows_QueueItemEvents INT = @BatchSize;
 	WHILE(@Deleted_Rows_QueueItemEvents = @BatchSize)
 	BEGIN
-		DELETE TOP(@BatchSize) FROM [dbo].[QueueItemEvents] WHERE Id <= @QueueItemEvents_Cutoff_Id;
+		DELETE TOP(@BatchSize) FROM [dbo].[QueueItemEvents] WHERE Id <= @QueueItemEvents_Cutoff_Id AND TimeStamp <= @CutoffTimeStamp;
 		SET @Deleted_Rows_QueueItemEvents = @@ROWCOUNT;
 		SET @total_deleted_queueItemEvents = @Deleted_Rows_QueueItemEvents + @total_deleted_queueItemEvents;
 	END;
@@ -63,7 +64,7 @@ BEGIN
 	DECLARE @Deleted_Rows_Jobs INT = @BatchSize;
 	WHILE(@Deleted_Rows_Jobs = @BatchSize)
 	BEGIN
-		DELETE TOP(@BatchSize) FROM [dbo].[Jobs] WHERE Id <= @Jobs_Cutoff_Id;
+		DELETE TOP(@BatchSize) FROM [dbo].[Jobs] WHERE Id <= @Jobs_Cutoff_Id AND CreationTime <= @CutoffTimeStamp;
 		SET @Deleted_Rows_Jobs = @@ROWCOUNT;
 		SET @total_deleted_jobs = @Deleted_Rows_Jobs + @total_deleted_jobs;	
 	END;
@@ -72,7 +73,7 @@ BEGIN
 	DECLARE @Deleted_Rows_JobEvents INT = @BatchSize;
 	WHILE(@Deleted_Rows_JobEvents = @BatchSize)
 	BEGIN
-		DELETE TOP(@BatchSize) FROM [dbo].[JobEvents] WHERE Id <= @JobEvents_Cutoff_Id;
+		DELETE TOP(@BatchSize) FROM [dbo].[JobEvents] WHERE Id <= @JobEvents_Cutoff_Id AND TimeStamp <= @CutoffTimeStamp;
 		SET @Deleted_Rows_JobEvents = @@ROWCOUNT;
 		SET @total_deleted_jobEvents = @Deleted_Rows_JobEvents + @total_deleted_jobEvents;
 	END;
@@ -81,7 +82,7 @@ BEGIN
 	DECLARE @Deleted_Rows_RobotLogs INT = @BatchSize;
 	WHILE(@Deleted_Rows_RobotLogs = @BatchSize)
 	BEGIN
-		DELETE TOP(@BatchSize) FROM [dbo].[RobotLogs] WHERE Id <= @RobotLogs_Cutoff_Id;
+		DELETE TOP(@BatchSize) FROM [dbo].[RobotLogs] WHERE Id <= @RobotLogs_Cutoff_Id AND TimeStamp <= @CutoffTimeStamp;
 		SET @Deleted_Rows_RobotLogs = @@ROWCOUNT;
 		SET @total_deleted_robotLogs = @Deleted_Rows_RobotLogs + @total_deleted_robotLogs;
 	END;
